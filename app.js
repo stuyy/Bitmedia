@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
-const database = require('./database/database');
 
 app.use(cookieParser('keyboard cat'));
 app.use(session({
