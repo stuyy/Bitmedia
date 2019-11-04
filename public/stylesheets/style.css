@@ -1,0 +1,10 @@
+body {
+    background-color: #534B62;
+}
+.user-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
