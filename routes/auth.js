@@ -11,7 +11,8 @@ router.get('/register', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    res.render('login', { title: 'Login'})
+    let msg = req.flash('success');
+    res.render('login', { title: 'Login', msg })
 });
 
 router.post('/register', [
@@ -29,9 +30,9 @@ router.post('/register', [
         if(val !== req.body.confirm) throw new Error("Passwords don't match.");
         else return true;
     }).withMessage("Passwords don't match.")
-  ], (req, res) => {
+  ], async (req, res) => {
     const errors = validationResult(req);
-    let { firstName, lastName, email } = req.body;
+    let { firstName, lastName, email, password } = req.body;
     if (!errors.isEmpty()) {
         console.log(errors);
         let errs = errors.array().map(err => err.msg);
@@ -39,7 +40,15 @@ router.post('/register', [
         res.render('register', { error: req.flash(), title: 'Register', firstName: firstName, lastName: lastName, email: email });
         res.end();
     }
-    console.log(req.body);
+    else {
+        password = await User.hashPassword(password);
+        let user = await User.create({ firstName: firstName, lastName: lastName, email: email, password: password }).catch(err => console.log(err));
+        if(user)
+        {
+            req.flash('success', 'You can now login.');
+            res.redirect('/login');
+        }
+    }
 });
 
 module.exports = router;
