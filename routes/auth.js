@@ -7,7 +7,7 @@ User.sync();
 router.get('/register', (req, res) => {
     res.render('register', { error: {
         error: []
-    }, title: 'Register' });
+    }, title: 'Register', firstName: '', lastName: '', email: '' });
 });
 
 router.get('/login', (req, res) => {
@@ -31,11 +31,12 @@ router.post('/register', [
     }).withMessage("Passwords don't match.")
   ], (req, res) => {
     const errors = validationResult(req);
+    let { firstName, lastName, email } = req.body;
     if (!errors.isEmpty()) {
         console.log(errors);
         let errs = errors.array().map(err => err.msg);
         req.flash('error', errs);
-        res.render('register', { error: req.flash(), title: 'Register'});
+        res.render('register', { error: req.flash(), title: 'Register', firstName: firstName, lastName: lastName, email: email });
         res.end();
     }
     console.log(req.body);
