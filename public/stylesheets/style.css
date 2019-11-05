@@ -1,5 +1,14 @@
+* {
+
+    margin: 0;
+    padding: 0;
+}
 body {
     background-color: #534B62;
+}
+h1 {
+    margin: 0;
+    padding: 0;
 }
 .user-form {
     position: absolute;
@@ -12,4 +21,59 @@ body {
 .icons {
     padding: 5px;
     font-size: 32px;
+}
+.my-card.mdl-card {
+    width: 100%;
+}
+
+.dashboard-body {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.1)
+      ), url('/assets/beach.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.cards {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.welcome-card.mdl-card {
+    width: 50%;
+    height: 400px;
+}
+
+.profile-card.mdl-card {
+    width: 30%;
+    height: 400px;
+}
+
+.welcome-card > .mdl-card__title {
+    background: url('/assets/walk.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 70%;
+    color: white;
+}
+
+.profile-card > .mdl-card__title {
+    background: url('/assets/book.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 70%;
+    color: white;
+}
+.my-dialog.mdl-dialog {
+    width: 60%;
+    margin: 0 auto;
+}
+.mdl-dialog__content {
+    
+}
+
+
+.task-form > div {
+    width: 100%;
 }

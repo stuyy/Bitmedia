@@ -4,6 +4,7 @@ const User = require('../models/User');
 
 passport.serializeUser(function(user, done) {
     console.log("Serializing..")
+    console.log(user);
     done(null, user.dataValues.email);
 });
   
@@ -19,6 +20,7 @@ passport.use(new LocalStrategy(async (username, password, done) => {
     const user = await User.findOne({ where: { email: username }});
     if(user)
     {   
+        console.log(user.dataValues);
         let result = await user.comparePassword(password, user.password);
         return result ? done(null, user) : done(null, false)
     } 

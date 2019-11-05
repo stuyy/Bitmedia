@@ -6,6 +6,7 @@ const passport = require('passport');
 
 User.init(DB);
 User.sync();
+
 router.get('/register', isRegistered, (req, res) => {
     res.render('register', { error: {
         error: []
@@ -57,6 +58,16 @@ router.post('/register', [
     }
 });
 
+router.get('/logout', (req, res)  =>  {
+    if(req.user) {
+        req.logout();
+        res.redirect('/login');
+    }
+    else {
+        res.status(403);
+        res.redirect('/login');
+    }
+})
 function isRegistered(req, res, next) {
     if(req.user) {
         console.log('Yes');
