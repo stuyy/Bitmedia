@@ -7,4 +7,9 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+    width: 30%;
+}
+.icons {
+    padding: 5px;
+    font-size: 32px;
 }

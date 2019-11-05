@@ -29,7 +29,7 @@ class User extends Model {
         let hash = await bcrypt.hash(pw, salt);
         return hash ? hash : null;
     }
-    async comparePassword(pw, hash) {
+    async comparePassword(pass, hash) {
         return await bcrypt.compare(pass, hash);
     }   
 }
