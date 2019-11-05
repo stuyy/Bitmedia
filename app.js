@@ -34,4 +34,4 @@ app.set('view engine', 'ejs');
 app.use('/', authRoute);
 app.use('/dashboard', dashboardRoute);
 
-app.listen(3000, console.log(`Listening on port 3000.`));
+app.listen(process.env.PORT, console.log(`Listening on port 3000.`));
