@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { check, body, validationResult } = require('express-validator');
 const User = require('../models/User');
 const DB = require('../database/database');
+const passport = require('passport');
+
 User.init(DB);
 User.sync();
 router.get('/register', (req, res) => {
@@ -13,6 +15,11 @@ router.get('/register', (req, res) => {
 router.get('/login', (req, res) => {
     let msg = req.flash('success');
     res.render('login', { title: 'Login', msg })
+});
+
+router.post('/login', passport.authenticate('local'), (req, res) => {
+    let user = req.user.dataValues;
+    res.redirect('/dashboard', { firstName: user.firstName, lastName: user.lastName, email: user.email, createdAt: user.createdAt })
 });
 
 router.post('/register', [
