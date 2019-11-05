@@ -6,20 +6,19 @@ const passport = require('passport');
 
 User.init(DB);
 User.sync();
-router.get('/register', (req, res) => {
+router.get('/register', isRegistered, (req, res) => {
     res.render('register', { error: {
         error: []
     }, title: 'Register', firstName: '', lastName: '', email: '' });
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', isAuthorized, (req, res) => {
     let msg = req.flash('success');
     res.render('login', { title: 'Login', msg })
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-    let user = req.user.dataValues;
-    res.redirect('/dashboard', { firstName: user.firstName, lastName: user.lastName, email: user.email, createdAt: user.createdAt })
+    res.redirect('/dashboard')
 });
 
 router.post('/register', [
@@ -58,4 +57,16 @@ router.post('/register', [
     }
 });
 
+function isRegistered(req, res, next) {
+    if(req.user) {
+        console.log('Yes');
+        res.redirect('/dashboard');
+    }
+    else next();
+}
+
+function isAuthorized(req, res, next) {
+    if(req.user) res.redirect('/dashboard');
+    else res.redirect('/');
+}
 module.exports = router;
