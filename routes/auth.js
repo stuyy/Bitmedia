@@ -67,6 +67,6 @@ function isRegistered(req, res, next) {
 
 function isAuthorized(req, res, next) {
     if(req.user) res.redirect('/dashboard');
-    else res.redirect('/');
+    else next();
 }
 module.exports = router;
