@@ -1,5 +1,4 @@
 * {
-
     margin: 0;
     padding: 0;
 }
@@ -75,5 +74,47 @@ h1 {
 
 
 .task-form > div {
+    width: 100%;
+}
+
+.dashboard-main {
+    display: flex;
+    justify-content: center;
+}
+.status-post {
+    width: 52%;
+    text-align: center;
+}
+
+.recent-tasks-wrapper {
+    width: 30%;
+}
+.recent-tasks-wrapper > h3   {
+    color: white;
+    text-align: center;
+}
+.recent-tasks {
+    width: 100%;
+    
+}
+.task-card.mdl-card {
+    width: 100%;
+}
+
+.status-card {
+    text-align: center;
+}
+.status-card.mdl-card {
+    margin-top: 50px;
+    width: 96%;
+    height: 100%;
+    
+}
+
+.status-form  {
+    width: 100%;
+}
+
+.status-form > div {
     width: 100%;
 }
