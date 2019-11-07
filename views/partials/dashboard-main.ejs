@@ -1,18 +1,18 @@
 <div class="dashboard-main">
-    <div class="status-card mdl-card mdl-shadow--16dp mr-4">
+    <div class="status-card mdl-card mdl-shadow--16dp mr-4 mdl-color--deep-orange-300">
         <div class="mdl-card__menu">
-            
         </div>
         <div class="mdl-card__title  mdl-card--border">
             <h4>Update Your Status</h4>
         </div>
-        <form class="dashboard-status-form">
+        <form class="dashboard-status-form" method="POST" action="/post/status">
             <div class="mdl-textfield mdl-js-textfield">
-                <textarea class="status-textarea mdl-textfield__input" rows="4" type="text" placeholder="What's new?"></textarea>
+                <textarea class="status-textarea mdl-textfield__input" rows="4" type="text" placeholder="What's new?" id="status"></textarea>
             </div>
         </form>
-        <div class="mdl-card__actions">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange-100">Submit</button>
+        <div class="action-buttons mdl-card__actions">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-rippe-effect mdl-color--red-100">Clear</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange-100" onclick="postStatus()">Submit</button>
         </div>
     </div>
     <div class="recent-tasks-sidebar ml-4">

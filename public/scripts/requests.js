@@ -1,7 +1,7 @@
 async function postStatus() {
-    let status = document.getElementById('status').value;
-    if(status.length !== 0) {
-        let statusObj = { status: status }
+    let status = document.getElementById('status');
+    if(status.value.length !== 0) {
+        let statusObj = { status: status.value }
         try {
             let res = await fetch('/user/post/status', {
                 method: 'POST',
@@ -10,10 +10,11 @@ async function postStatus() {
                 },
                 body: JSON.stringify(statusObj)
             });
-            
+            let alert = generateBootstrapAlert('success', 'Status Updated!');
+            status.value = '';
         }
         catch(err) {
-            
+            console.log(err);
         }
     }
     

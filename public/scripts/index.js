@@ -42,6 +42,7 @@ function removeChildrenNodes(elementNode) {
             elementNode.removeChild(m)
     })
 }
+
 function generateBootstrapAlert(alertType, contents) {
     alertType = ''.concat('alert', '-', alertType)
     let mainDiv = document.createElement('div');

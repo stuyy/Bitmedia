@@ -15,12 +15,16 @@ router.get('/register', isRegistered, (req, res) => {
 
 router.get('/login', isAuthorized, (req, res) => {
     let msg = req.flash('success');
+    console.log(req.session);
     res.render('login', { title: 'Login', msg })
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
+    console.log(req.session)
+    console.log("Redirecting...")
     res.redirect('/dashboard')
 });
+
 
 router.post('/register', [
     check('firstName').isLength({ min: 1 }).withMessage('Name too short!'),
@@ -61,6 +65,8 @@ router.post('/register', [
 router.get('/logout', (req, res)  =>  {
     if(req.user) {
         req.logout();
+        req.session.destroy(err => console.log(err));
+        console.log("Logging out.")
         res.redirect('/login');
     }
     else {
@@ -69,6 +75,7 @@ router.get('/logout', (req, res)  =>  {
     }
 })
 function isRegistered(req, res, next) {
+    console.log(req.session)
     if(req.user) {
         console.log('Yes');
         res.redirect('/dashboard');
@@ -77,6 +84,8 @@ function isRegistered(req, res, next) {
 }
 
 function isAuthorized(req, res, next) {
+    console.log(req.session)
+    console.log(req.user)
     if(req.user) res.redirect('/dashboard');
     else next();
 }

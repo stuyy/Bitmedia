@@ -28,6 +28,7 @@ router.get('/post/', isUserAuthenticated, (req, res) => {
 router.post('/post/status', isUserAuthenticated, async (req, res) => {
     
     let user = req.user.dataValues;
+    console.log(req.body)
     try {
         await Status.create({
             author: user.firstName + " " + user.lastName,

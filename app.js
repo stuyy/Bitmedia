@@ -22,7 +22,7 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     cookie: {
-        maxAge: 360000
+        maxAge: 60000 * 60
     },
     store: new SessionStore({ db: database })
 }));
@@ -41,6 +41,5 @@ app.use('/', authRoute);
 app.use('/dashboard', dashboardRoute);
 app.use('/user', userRoute);
 
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}.`);
-});
+const server = app.listen(PORT);
+server.on('listening', () => console.log(`Listening on port ${PORT}.`))
