@@ -26,7 +26,12 @@
         </div>
         <div class="mdl-card__actions mdl-card--border">
           <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Get Started
+            <% if(lastStatus) { %>
+              <span>Last Update On: </span>
+              <span><%= lastStatus.createdAt.toLocaleDateString() %></span>
+              <span><%= lastStatus.createdAt.toLocaleTimeString() %></span>
+              <span style="color: green"><%= lastStatus.statusContent %></span>
+            <% } %>
           </a>
         </div>
         <div class="mdl-card__menu">
@@ -53,27 +58,7 @@
       </div>
     </div>
     <% include partials/dashboard-main %>
-    <dialog class="mdl-dialog my-dialog">
-      <h4 class="mdl-dialog__title">New Task</h4>
-      <div class="mdl-dialog__content">
-        <div id="errors"></div>
-        <form action="#" class="task-form">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="taskTitle">
-            <label class="mdl-textfield__label" for="taskTitle">Title</label>
-          </div>
-          <br/>
-          <div class="mdl-textfield mdl-js-textfield">
-            <textarea class="mdl-textfield__input" type="text" rows= "10" id="taskDescription"></textarea>
-            <label class="mdl-textfield__label" for="sample5">Text lines...</label>
-          </div>
-        </form>
-      </div>
-      <div class="mdl-dialog__actions">
-        <button type="button" class="mdl-button" onclick="createNewTask()">Submit</button>
-        <button type="button" class="mdl-button close" onclick="closeDialogTask()">Cancel</button>
-      </div>
-    </dialog>
+    <% include partials/misc/dialog %>
   </main>
 </div>
 <script src="/scripts/index.js"></script>
