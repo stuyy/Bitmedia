@@ -27,7 +27,7 @@ h1 {
 
 .dashboard-body {
     background: linear-gradient(
-        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.6),
         rgba(0, 0, 0, 0.1)
       ), url('/assets/beach.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -39,6 +39,17 @@ h1 {
     justify-content: center;
 }
 
+@media (max-width: 1200px) {
+  .cards {
+    margin-top: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+  .welcome-card, .profile-card {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
 .welcome-card.mdl-card {
     width: 50%;
     height: 400px;
@@ -69,7 +80,7 @@ h1 {
     margin: 0 auto;
 }
 .mdl-dialog__content {
-    
+
 }
 
 .task-form > div {
@@ -80,7 +91,7 @@ h1 {
 
 .dashboard-main {
     display: flex;
-    padding-top: 50px;
+    margin-top: 50px;
     justify-content: center;
 }
 
@@ -97,7 +108,7 @@ h1 {
 .dashboard-status-form {
     text-align: center;
 }
-.mdl-textfield  { 
+.mdl-textfield  {
     width: 95% !important;
 }
 .recent-tasks-sidebar {
@@ -105,4 +116,32 @@ h1 {
 }
 .task-card.mdl-card {
     width: 100%;
+}
+.sidebar-link {
+  color: black !important;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-main {
+    margin-top: 0;
+  }
+  .status-card, .recent-tasks-sidebar {
+    margin: 0 !important;
+  }
+  .status-card {
+    width: 60% !important;
+  }
+  .recent-tasks-sidebar {
+    width: 40% !important;
+    height: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard-main {
+    flex-direction: column-reverse;
+  }
+  .status-card, .recent-tasks-sidebar {
+    width: 100% !important;
+  }
 }
