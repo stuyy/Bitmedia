@@ -11,20 +11,30 @@
             </div>
         </form>
         <div class="action-buttons mdl-card__actions">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-rippe-effect mdl-color--red-100">Clear</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red-100">Clear</button>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange-100" onclick="postStatus()">Submit</button>
         </div>
     </div>
     <div class="recent-tasks-sidebar ml-4">
-        <div class="task-card mdl-card mdl-shadow--16dp">
-            <div class="mdl-card__title">
-                <h4>Recent Task #1</h4>
+        <% if(recentTasks) { %>
+        <% recentTasks.forEach(task => { %>
+            <div class="task-card mdl-card mdl-shadow--16dp">
+                <div class="mdl-card__menu">
+                    <button class="mdl-button mdl-js-button mdl-button--raised" onclick="deleteTask(event)" id="<%=task.id%>">DELETE</button>
+                </div>
+                <div class="mdl-card__title">
+                    <h4><%= task.title %></h4>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <p><%= task.description %></p>
+                </div>
             </div>
-        </div>
-        <div class="task-card mdl-card mdl-shadow--16dp">
-            <div class="mdl-card__title">
-                <h4>Recent Task #2</h4>
+        <% }); } else {  %>
+            <div class="task-card mdl-card mdl-shadow--16dp">
+                <div class="mdl-card__title">
+                    <h3>You have no tasks.</h3>
+                </div>
             </div>
-        </div>
+        <% } %>
     </div>
 </div>
