@@ -1,3 +1,6 @@
+:root {
+  --mdl-blue: #42A5F5;
+}
 * {
     margin: 0;
     padding: 0;
@@ -38,7 +41,9 @@ h1 {
     margin-top: 50px;
     justify-content: center;
 }
-
+.mdl-layout__drawer {
+  border-right: 0 !important;
+}
 @media (max-width: 1200px) {
   .cards {
     margin-top: 0;
@@ -121,6 +126,12 @@ h1 {
 }
 .task-card.mdl-card {
     width: 100%;
+}
+.task-card {
+  word-wrap: break-word;
+}
+.task-card > .mdl-card__title {
+  color: black !important;
 }
 .sidebar-link {
   color: black !important;
