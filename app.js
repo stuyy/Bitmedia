@@ -11,7 +11,7 @@ const database = require('./database/database');
 const PORT = process.env.PORT || 3506;
 const morgan = require('morgan');
 const ENVIRONMENT = process.env.ENVIRONMENT;
-
+const path = require('path');
 if(ENVIRONMENT === 'DEV')
   app.use(morgan('tiny'));
 
@@ -40,7 +40,7 @@ const authRoute = require('./routes/auth');
 const dashboardRoute = require('./routes/dashboard');
 const userRoute = require('./routes/user');
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 app.use('/', authRoute);
