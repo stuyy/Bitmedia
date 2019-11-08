@@ -1,11 +1,7 @@
 const router = require('express').Router();
 const { check, body, validationResult } = require('express-validator');
 const User = require('../models/User');
-const DB = require('../database/database');
 const passport = require('passport');
-
-User.init(DB);
-User.sync();
 
 router.get('/register', isRegistered, (req, res) => {
     res.render('register', { error: {
@@ -24,7 +20,6 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
     console.log("Redirecting...")
     res.redirect('/dashboard')
 });
-
 
 router.post('/register', [
     check('firstName').isLength({ min: 1 }).withMessage('Name too short!'),

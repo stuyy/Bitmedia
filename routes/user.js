@@ -3,14 +3,6 @@ const User = require('../models/User');
 const Status = require('../models/StatusUpdate');
 const Task = require('../models/Task');
 
-const DB = require('../database/database');
-
-Task.init(DB);
-Task.sync();
-
-Status.init(DB);
-Status.sync();
-
 function isUserAuthenticated(req, res, next) {
     if(req.user) next();
     else {
