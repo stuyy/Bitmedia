@@ -11,7 +11,15 @@ async function postStatus() {
                 body: JSON.stringify(statusObj)
             });
             let alert = generateBootstrapAlert('success', 'Status Updated!');
+            document.getElementById('statusUpdateDate').innerText = new Date().toLocaleDateString();
+            document.getElementById('statusUpdateTime').innerText = new Date().toLocaleTimeString();
+            document.getElementById('statusUpdateContent').innerText = status.value;
             status.value = '';
+            let successDiv = document.getElementById('success-msg');
+            successDiv.appendChild(alert);
+            setTimeout(() => {
+                successDiv.removeChild(alert);
+            }, 5500);
         }
         catch(err) {
             console.log(err);
@@ -19,7 +27,9 @@ async function postStatus() {
     }
     
 }
-
+function clearStatus() {
+    document.getElementById('status').value = '';  
+}
 async function createNewTask() {
     let title = document.getElementById('taskTitle').value;
     let description = document.getElementById('taskDescription').value;
