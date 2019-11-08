@@ -1,5 +1,5 @@
 
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 class User extends Model { 
@@ -19,9 +19,9 @@ class User extends Model {
                 type: DataTypes.STRING
             }
         }, {
-            sequelize: sequelize,
             tableName: 'Users',
-            timestamps: true
+            timestamps: true,
+            sequelize: sequelize
         })
     }
     static async hashPassword(pw) {

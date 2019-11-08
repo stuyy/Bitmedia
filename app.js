@@ -9,7 +9,8 @@ const LocalAuth = require('./strategies/local');
 const SessionStore = require('express-session-sequelize')(session.Store);
 const database = require('./database/database');
 const PORT = process.env.PORT || 3506;
-const morgan = require('morgan')
+const morgan = require('morgan');
+
 app.use(morgan('tiny'))
 app.use(cookieParser('keyboard cat'));
 
