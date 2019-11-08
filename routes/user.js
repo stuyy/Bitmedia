@@ -1,7 +1,13 @@
 const router = require('express').Router();
 const User = require('../models/User');
 const Status = require('../models/StatusUpdate');
+const Task = require('../models/Task');
+
 const DB = require('../database/database');
+
+Task.init(DB);
+Task.sync();
+
 Status.init(DB);
 Status.sync();
 
@@ -43,4 +49,29 @@ router.post('/post/status', isUserAuthenticated, async (req, res) => {
     }
 });
 
+router.post('/post/task', isUserAuthenticated, async (req, res) =>  {
+    let user = req.user.dataValues;
+    console.log(req.body);
+    let newTask = await Task.create({
+        author: user.firstName + ' ' + user.lastName,
+        title: req.body.title,
+        description: req.body.desc,
+        authorId: user.email,
+        completed: false
+    }).catch(err => console.log(err));
+    
+    if(newTask) {
+        console.log("Good.");
+    }
+});
+
+router.delete('/post/task', isUserAuthenticated, async (req, res) => {
+    console.log(req.body);
+    // Find Task by ID.
+    let task = await Task.findByPk(req.body.id).catch(err => console.log(err));
+    if(task) {
+        let f = await task.destroy().catch(err => console.log(err));
+        console.log("Deleted.", f)
+    }
+})
 module.exports = router;
