@@ -98,6 +98,11 @@ h1 {
 .status-card.mdl-card {
     width: 50%;
     height: 80%;
+    background: url('/assets/beachbg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 70%;
+    background-attachment: fixed;
 }
 
 .action-buttons {
@@ -120,7 +125,9 @@ h1 {
 .sidebar-link {
   color: black !important;
 }
-
+#status {
+  resize: none;
+}
 @media (max-width: 1200px) {
   .dashboard-main {
     margin-top: 0;

@@ -1,6 +1,6 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
@@ -10,13 +10,18 @@ const SessionStore = require('express-session-sequelize')(session.Store);
 const database = require('./database/database');
 const PORT = process.env.PORT || 3506;
 const morgan = require('morgan');
+const ENVIRONMENT = process.env.ENVIRONMENT;
 
-app.use(morgan('tiny'))
+if(ENVIRONMENT === 'DEV')
+  app.use(morgan('tiny'));
+
+
+  
 app.use(cookieParser('keyboard cat'));
 
 app.use(flash());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use(session({
     secret: 'some string',
@@ -28,7 +33,7 @@ app.use(session({
     store: new SessionStore({ db: database })
 }));
 
-app.use(passport.initialize()); 
+app.use(passport.initialize());
 app.use(passport.session());
 
 const authRoute = require('./routes/auth');
@@ -43,4 +48,4 @@ app.use('/dashboard', dashboardRoute);
 app.use('/user', userRoute);
 
 const server = app.listen(PORT);
-server.on('listening', () => console.log(`Listening on port ${PORT}.`))
+server.on('listening', () => console.log(`Listening on port ${PORT}.`));

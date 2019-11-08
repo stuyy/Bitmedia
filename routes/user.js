@@ -17,6 +17,7 @@ function isUserAuthenticated(req, res, next) {
         res.status(403).redirect('/login')
     }
 }
+
 router.get('/', (req, res) => {
     if(req.user) {
         res.send("user")
@@ -32,7 +33,7 @@ router.get('/post/', isUserAuthenticated, (req, res) => {
 });
 
 router.post('/post/status', isUserAuthenticated, async (req, res) => {
-    
+
     let user = req.user.dataValues;
     console.log(req.body)
     try {
@@ -59,7 +60,7 @@ router.post('/post/task', isUserAuthenticated, async (req, res) =>  {
         authorId: user.email,
         completed: false
     }).catch(err => console.log(err));
-    
+
     if(newTask) {
         console.log("Good.");
     }
@@ -71,7 +72,7 @@ router.delete('/post/task', isUserAuthenticated, async (req, res) => {
     let task = await Task.findByPk(req.body.id).catch(err => console.log(err));
     if(task) {
         let f = await task.destroy().catch(err => console.log(err));
-        console.log("Deleted.", f)
+        res.send(202).send(202);
     }
 })
 module.exports = router;
