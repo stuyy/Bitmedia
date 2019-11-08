@@ -1,6 +1,14 @@
 const router = require('express').Router();
 const Status = require('../models/StatusUpdate');
 const Task = require('../models/Task');
+const CLIENT_ROUTES = [
+    { name: 'Dashboard', url: '/dashboard' },
+    { name: 'Blog', url: '/blog' },
+    { name: 'Tasks', url: '/task' },
+    { name: 'Updates', url: '/updates' },
+    { name: 'Settings', url: '/settings' },
+    { name: 'Logout', url: '/logout' }
+];
 
 router.get('/', async (req, res) => {
     if(req.user) {
@@ -24,7 +32,7 @@ router.get('/', async (req, res) => {
             recentTasks = null;
 
         console.log(recentTasks)
-        res.render('dashboard', { title: 'Dashboard', firstName: user.firstName, lastName: user.lastName, email: user.email, createdAt: user.createdAt, lastStatus: lastStatus, recentTasks: recentTasks });
+        res.render('dashboard', { title: 'Dashboard', firstName: user.firstName, lastName: user.lastName, email: user.email, createdAt: user.createdAt, lastStatus: lastStatus, recentTasks: recentTasks, routes: CLIENT_ROUTES });
     }
     else {
         res.status(403);

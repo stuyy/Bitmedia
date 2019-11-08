@@ -12,15 +12,16 @@
   <div class="mdl-layout__drawer mdl-color--primary-dark">
     <span class="mdl-layout-title">Menu</span>
     <nav class="mdl-navigation">
-      <a class="mdl-color-text--white mdl-navigation__link" href="/dashboard">Dashboard</a>
-      <a class="mdl-color-text--white mdl-navigation__link" href="/blog">Blog</a>
-      <a class="mdl-color-text--white mdl-navigation__link" href="/settings">Settings</a>
-      <a class="mdl-color-text--white mdl-navigation__link" href="/logout">Logout</a>
+      <% routes.forEach(route => { %>
+        <a class="mdl-color-text--white mdl-navigation__link" href="<%= route.url %>">
+          <%= route.name %>
+        </a>
+      <% }); %>
     </nav>
   </div>
   <main class="mdl-layout__content dashboard-body">
     <div id="success-msg">
-      
+
     </div>
     <% include partials/dashboard/main %>
     <% include partials/dashboard/status %>
