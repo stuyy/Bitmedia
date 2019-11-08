@@ -45,6 +45,7 @@ async function createNewTask() {
             body: JSON.stringify({ title: title, desc: description })
         });
         closeDialogTask();
+        generateTaskCard();
     } 
     catch(e) {
         if(title.length < 10) {
@@ -62,6 +63,43 @@ async function createNewTask() {
     }
 }
 
+function generateTaskCard() {
+    let mdlCard = document.createElement('div');
+    mdlCard.classList.add('task-card', 'mdl-card', 'mdl-shadow--16dp');
+    let mdlCardMenu = document.createElement('div');
+    mdlCardMenu.classList.add('mdl-card__menu');
+    let mdlMenuBtn = document.createElement('button');
+    mdlMenuBtn.classList.add('mdl-button', 'mdl-js-button', 'mdl-button--raised');
+    mdlMenuBtn.addEventListener('click', deleteTask);
+    mdlMenuBtn.innerText = 'DELETE';
+
+    mdlCardMenu.appendChild(mdlMenuBtn);
+
+    let mdlCardTitle = document.createElement('div');
+    mdlCardTitle.classList.add('mdl-card__title');
+    
+    let titleHeader = document.createElement('h4');
+    let titleHeaderText = document.createTextNode('Title');
+    titleHeader.appendChild(titleHeaderText);
+
+    mdlCardTitle.appendChild(titleHeader);
+
+    let mdlCardSupportingText = document.createElement('div');
+    let supportingText = document.createTextNode('Description');
+    mdlCardSupportingText.appendChild(supportingText);
+
+    mdlCard.appendChild(mdlCardMenu);
+    mdlCard.appendChild(mdlCardTitle);
+    mdlCard.appendChild(mdlCardSupportingText);
+
+    let taskSidebar = document.getElementById('task-sidebar');
+    let tasks = taskSidebar.getElementsByClassName('task-card');
+    let last = tasks.item(2);
+    console.log(last)
+    taskSidebar.removeChild(last);
+    taskSidebar.removeChild(taskSidebar.lastChild);
+    taskSidebar.insertBefore(mdlCard, taskSidebar.firstChild);
+}
 async function deleteTask(event) {
     console.log("Hello?");
     let id = event.target.id;

@@ -5,6 +5,7 @@ addButton.addEventListener('click', function() {
 });
 
 function closeDialogTask() {
+    console.log("Hi")
     dialog.close();
 }
 

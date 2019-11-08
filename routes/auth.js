@@ -4,7 +4,7 @@ const User = require('../models/User');
 const passport = require('passport');
 
 router.get('/register', isRegistered, (req, res) => {
-    res.render('register', { error: {
+    res.render('routes/register', { error: {
         error: []
     }, title: 'Register', firstName: '', lastName: '', email: '' });
 });
@@ -12,7 +12,7 @@ router.get('/register', isRegistered, (req, res) => {
 router.get('/login', isAuthorized, (req, res) => {
     let msg = req.flash('success');
     console.log(req.session);
-    res.render('login', { title: 'Login', msg })
+    res.render('routes/login', { title: 'Login', msg })
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
@@ -43,7 +43,7 @@ router.post('/register', [
         console.log(errors);
         let errs = errors.array().map(err => err.msg);
         req.flash('error', errs);
-        res.render('register', { error: req.flash(), title: 'Register', firstName: firstName, lastName: lastName, email: email });
+        res.render('routes/register', { error: req.flash(), title: 'Register', firstName: firstName, lastName: lastName, email: email });
         res.end();
     }
     else {
