@@ -34,7 +34,7 @@ router.post('/post/status', isUserAuthenticated, async (req, res) => {
             authorId: user.email,
             statusContent: req.body.status
         });
-        res.status(200).send(200);
+        res.status(200).end();
     }
     catch (err) {
         console.log(err);
@@ -53,9 +53,8 @@ router.post('/post/task', isUserAuthenticated, async (req, res) =>  {
         completed: false
     }).catch(err => console.log(err));
 
-    if(newTask) {
-        console.log("Good.");
-    }
+    if(newTask)
+        res.send(201);
 });
 
 router.delete('/post/task', isUserAuthenticated, async (req, res) => {
