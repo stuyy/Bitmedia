@@ -21,6 +21,14 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
     res.redirect('/dashboard')
 });
 
+router.get('/login/google', passport.authenticate('google', { scope: ['profile', 'email']}), (req, res) => {
+    console.log("Good!");
+});
+
+router.get('/google/callback', passport.authenticate('google', {failureRedirect: '/login' }), (req, res) => {
+    res.redirect('/dashboard');
+});
+
 router.post('/register', [
     check('firstName').isLength({ min: 1 }).withMessage('Name too short!'),
     check('lastName').isLength({ min: 1 }).withMessage('Name too short!'),
