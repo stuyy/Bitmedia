@@ -1,5 +1,4 @@
 <form class="user-form" method="POST" action="/login">
-
     <% if(msg.length !== 0) { %>
         <div class="alert alert-success" role="alert">  
             <%= msg %>    
@@ -9,6 +8,7 @@
         </div>
     <% } %>      
     
+    <!-- 
     <div class="form-group">
         <label for="exampleInputEmail1">Email Address</label>
         <input name="username" type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -16,12 +16,22 @@
     <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input name="password" type="password" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Password">
+    </div>-->
+    <div class="login-form mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+        <input class="mdl-textfield__input" type="email" name="username" id="email-mdl">
+        <label class="mdl-textfield__label" for="email-mdl">E-Mail</label>
     </div>
-    <button class="btn btn-dark btn-sm btn-block" type="submit">Submit</button>
+    <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+        <input class="mdl-textfield__input" type="password" name="password" id="password-mdl">
+        <label class="mdl-textfield__label" for="password-mdl">Password</label>
+    </div>
+    <button class="btn btn-dark mdl-color--accent btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit">
+        Login
+    </button>
     <div class="mt-2 text-center">
-        <i class="fab fa-facebook icons" id="fb"></i>
-        <i class="fab fa-google icons" id="google"></i>
-        <i class="fab fa-github-square icons" id="github"></i>
+        <a href="/login/facebook"><i class="fab fa-facebook icons" id="fb"></i></a>
+        <a href="/login/google"><i class="fab fa-google icons" id="google"></i></a>
+        <a href="/login/github"><i class="fab fa-github icons" id="github"></i></a>
     </div>
-    <small class="form-text text-center">Don't have an account? <a href="/register">Register</a></small>
+    <large class="form-text text-center">Don't have an account? <a href="/register">Register</a></large>
 </form>

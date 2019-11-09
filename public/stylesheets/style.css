@@ -20,10 +20,48 @@ h1 {
     color: white;
     width: 30%;
 }
+.login-form .mdl-textfield__label {
+  color: orange !important;
+}
+.login-form .mdl-textfield__input {
+  border-bottom: 2px solid orange !important;
+}
+.login-form .mdl-textfield {
+  width: 100% !important;
+}
 .icons {
     padding: 5px;
-    font-size: 32px;
+    font-size: 45px;
 }
+#fb {
+  color: #4267B2;
+  cursor: pointer;
+}
+#fb:hover {
+  color: #7590C7;
+  transition: color .8s;
+}
+#google {
+  color: #DB4437;
+  cursor: pointer;
+}
+#google:hover {
+  color: #E4776D;
+  transition: color .8s;
+}
+#github {
+  color: #211F1F;
+  cursor: pointer;
+}
+#github:hover {
+  color: #494747;
+  transition: color .8s;
+}
+
+.form-group > input {
+  height: 35px;
+}
+
 .my-card.mdl-card {
     width: 100%;
 }
@@ -53,6 +91,9 @@ h1 {
   .welcome-card, .profile-card {
     width: 100% !important;
     margin: 0 !important;
+  }
+  .user-form {
+    width: 70%;
   }
 }
 .welcome-card.mdl-card {
