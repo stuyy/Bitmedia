@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
             recentTasks = null;
 
         console.log(recentTasks)
-        res.render('routes/dashboard', { title: 'Dashboard', firstName: user.firstName, lastName: user.lastName, email: user.email, createdAt: user.createdAt, lastStatus: lastStatus, recentTasks: recentTasks, routes: CLIENT_ROUTES });
+        res.render('routes/dashboard', { title: 'Dashboard', firstName: user.firstName, lastName: user.lastName, email: user.email, createdAt: user.createdAt, lastStatus: lastStatus, recentTasks: recentTasks, routes: CLIENT_ROUTES, activeRoute: 'Dashboard' });
     }
     else {
         res.status(403);
