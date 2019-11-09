@@ -6,19 +6,23 @@
       <span class="mdl-layout-title">Welcome <%= firstName %> <%= lastName %>!</span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
+      <span>
+      <form action="/search" method="POST">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+            <i class="material-icons">search</i>
+          </label>
+          <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="text" id="sample6">
+            <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+          </div>
+        </div>
+        </form>
+    </span>
       <!-- Navigation -->
     </div>
   </header>
-  <div class="mdl-layout__drawer mdl-color--primary-dark">
-    <span class="mdl-layout-title">Menu</span>
-    <nav class="mdl-navigation">
-      <% routes.forEach(route => { %>
-        <a class="mdl-color-text--white mdl-navigation__link" href="<%= route.url %>">
-          <%= route.name %>
-        </a>
-      <% }); %>
-    </nav>
-  </div>
+  <% include ../partials/navbar %>
   <main class="mdl-layout__content dashboard-body">
     <div id="success-msg">
 
@@ -28,5 +32,4 @@
     <% include ../partials/misc/dialog %>
   </main>
 </div>
-<script src="/scripts/index.js"></script>
 <% include ../partials/footer %>
