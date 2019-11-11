@@ -3,47 +3,27 @@ const { check, body, validationResult } = require('express-validator');
 const User = require('../models/User');
 const passport = require('passport');
 
+const redirectDashboard = (req, res) => res.redirect('/dashboard');
+const isAuthorized = (req, res, next) => req.user ? res.redirect('/dashboard') : next();
+const isRegistered = (req, res, next) => req.user ? res.redirect('/dashboard') : next();
+
 router.get('/register', isRegistered, (req, res) => {
-    res.render('routes/register', { error: {
-        error: []
-    }, title: 'Register', firstName: '', lastName: '', email: '' });
+    res.render('routes/register', { error: { error: [] },
+    title: 'Register', firstName: '', lastName: '', email: '' });
 });
 
 router.get('/login', isAuthorized, (req, res) => {
-    let msg = req.flash('success');
-    console.log(req.session);
-    res.render('routes/login', { title: 'Login', msg })
+    res.render('routes/login', { title: 'Login', msg: req.flash('success') })
 });
 
-router.post('/login', passport.authenticate('local'), (req, res) => {
-    console.log(req.session)
-    console.log("Redirecting...")
-    res.redirect('/dashboard')
-});
+router.post('/login', passport.authenticate('local'), redirectDashboard);
+router.get('/login/google', passport.authenticate('google', { scope: ['profile', 'email']}));
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), redirectDashboard);
+router.get('/login/facebook', passport.authenticate('facebook'));
+router.get('/facebook/callback', passport.authenticate('facebook'), redirectDashboard);
+router.get('/login/github', passport.authenticate('github'));
+router.get('/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), redirectDashboard);
 
-router.get('/login/google', passport.authenticate('google', { scope: ['profile', 'email']}), (req, res) => {
-    console.log("Good!");
-});
-
-router.get('/google/callback', passport.authenticate('google', {failureRedirect: '/login' }), (req, res) => {
-    res.redirect('/dashboard');
-});
-
-router.get('/login/facebook', passport.authenticate('facebook'), (req, res) => {
-  console.log("Authenticating with Facebook.")
-});
-
-router.get('/facebook/callback', passport.authenticate('facebook'), (req, res) => {
-  res.redirect('/dashboard');
-});
-
-router.get('/login/github', passport.authenticate('github'), (req, res) => {
-  console.log("Github...");
-});
-
-router.get('/github/callback', passport.authenticate('github'), (req, res) => {
-  res.redirect('/dashboard');
-});
 router.post('/register', [
     check('firstName').isLength({ min: 1 }).withMessage('Name too short!'),
     check('lastName').isLength({ min: 1 }).withMessage('Name too short!'),
@@ -82,27 +62,10 @@ router.post('/register', [
 router.get('/logout', (req, res)  =>  {
     if(req.user) {
         req.logout();
-        req.session.destroy(err => console.log(err));
-        console.log("Logging out.")
         res.redirect('/login');
     }
-    else {
-        res.status(403);
-        res.redirect('/login');
-    }
-})
-function isRegistered(req, res, next) {
-    console.log(req.session)
-    if(req.user) {
-        console.log('Yes');
-        res.redirect('/dashboard');
-    }
-    else next();
-}
+    else
+        res.status(403).redirect('/login')
+});
 
-function isAuthorized(req, res, next) {
-
-    if(req.user) res.redirect('/dashboard');
-    else next();
-}
 module.exports = router;
