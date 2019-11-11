@@ -20,7 +20,8 @@
         <% recentTasks.forEach(task => { %>
             <div class="task-card mdl-card mdl-shadow--16dp">
                 <div class="mdl-card__menu">
-                    <button class="mdl-button mdl-js-button mdl-button--raised" onclick="deleteTask(event)" id="<%=task.id%>">DELETE</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised" onclick="deleteTask(event)" id="delete-<%=task.id%>">DELETE</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised" onclick="completeTask(event)" id="complete-<%=task.id%>">COMPLETE</button>
                 </div>
                 <div class="mdl-card__title mt-4">
                     <h5><%= task.title %></h5>
