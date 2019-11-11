@@ -65,5 +65,13 @@ router.delete('/post/task', isUserAuthenticated, async (req, res) => {
         let f = await task.destroy().catch(err => console.log(err));
         res.send(202).send(202);
     }
-})
+});
+
+router.put('/post/task', isUserAuthenticated, async (req, res) => {
+    console.log(req.body);
+    let task = await Task.update({ completed: true }, { where: { id: id }})
+        .catch(err => console.log(err));
+    console.log(task);
+    res.send(200);
+});
 module.exports = router;
