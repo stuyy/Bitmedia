@@ -25,4 +25,15 @@ router.get('/logout', (req, res)  =>  {
         res.status(403).redirect('/login')
 });
 
+router.get('/recover', isRegistered, (req, res) => {
+    res.render('routes/recover', { title: 'Recover Your Account', msg: req.flash('success') });
+});
+
+router.post('/recover', isRegistered, (req, res) => {
+    let { email } = req.body;
+    console.log(email)
+    req.flash('success', 'Please check your E-Mail for instructions on how to recover your account!');
+    res.redirect('/recover');
+});
+
 module.exports = router;
