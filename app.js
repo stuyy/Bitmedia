@@ -1,14 +1,11 @@
 require('dotenv').config();
+require('./strategies/authentication')
 const express = require('express');
 const app = express();
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const passport = require('passport');
-const LocalAuth = require('./strategies/local');
-const GoogleStrategy = require('./strategies/google');
-const FacebookStrategy = require('./strategies/facebook');
-const GitHubStrategy = require('./strategies/github');
 const SessionStore = require('express-session-sequelize')(session.Store);
 const database = require('./database/database');
 const PORT = process.env.PORT || 3506;
