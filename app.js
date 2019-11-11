@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const LocalAuth = require('./strategies/local');
 const GoogleStrategy = require('./strategies/google');
+const FacebookStrategy = require('./strategies/facebook');
 const SessionStore = require('express-session-sequelize')(session.Store);
 const database = require('./database/database');
 const PORT = process.env.PORT || 3506;
@@ -16,8 +17,6 @@ const path = require('path');
 if(ENVIRONMENT === 'DEV')
   app.use(morgan('tiny'));
 
-
-  
 app.use(cookieParser('keyboard cat'));
 
 app.use(flash());
@@ -49,6 +48,8 @@ app.use('/', authRoute);
 app.use('/dashboard', dashboardRoute);
 app.use('/user', userRoute);
 app.use('/task', taskRoute);
+
+app.use((req, res) => res.redirect('/dashboard'));
 
 const server = app.listen(PORT);
 server.on('listening', () => console.log(`Listening on port ${PORT}.`));

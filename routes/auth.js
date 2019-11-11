@@ -29,6 +29,14 @@ router.get('/google/callback', passport.authenticate('google', {failureRedirect:
     res.redirect('/dashboard');
 });
 
+router.get('/login/facebook', passport.authenticate('facebook'), (req, res) => {
+  console.log("Authenticating with Facebook.")
+});
+
+router.get('/facebook/callback', passport.authenticate('facebook'), (req, res) => {
+  res.redirect('/dashboard');
+})
+
 router.post('/register', [
     check('firstName').isLength({ min: 1 }).withMessage('Name too short!'),
     check('lastName').isLength({ min: 1 }).withMessage('Name too short!'),
@@ -48,7 +56,6 @@ router.post('/register', [
     const errors = validationResult(req);
     let { firstName, lastName, email, password } = req.body;
     if (!errors.isEmpty()) {
-        console.log(errors);
         let errs = errors.array().map(err => err.msg);
         req.flash('error', errs);
         res.render('routes/register', { error: req.flash(), title: 'Register', firstName: firstName, lastName: lastName, email: email });
@@ -87,8 +94,7 @@ function isRegistered(req, res, next) {
 }
 
 function isAuthorized(req, res, next) {
-    console.log(req.session)
-    console.log(req.user)
+
     if(req.user) res.redirect('/dashboard');
     else next();
 }
