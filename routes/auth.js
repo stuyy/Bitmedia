@@ -7,22 +7,13 @@ const redirectDashboard = (req, res) => res.redirect('/dashboard');
 const isAuthorized = (req, res, next) => req.user ? res.redirect('/dashboard') : next();
 const isRegistered = (req, res, next) => req.user ? res.redirect('/dashboard') : next();
 
-router.get('/register', isRegistered, (req, res) => {
-    res.render('routes/register', { error: { error: [] },
-    title: 'Register', firstName: '', lastName: '', email: '' });
-});
-
-router.get('/login', isAuthorized, (req, res) => {
-    res.render('routes/login', { title: 'Login', msg: req.flash('success') })
-});
-
 router.post('/login', passport.authenticate('local'), redirectDashboard);
 router.get('/login/google', passport.authenticate('google', { scope: ['profile', 'email']}));
-router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), redirectDashboard);
+router.get('/google/redirect', passport.authenticate('google', { failureRedirect: '/login' }), redirectDashboard);
 router.get('/login/facebook', passport.authenticate('facebook'));
-router.get('/facebook/callback', passport.authenticate('facebook'), redirectDashboard);
+router.get('/facebook/redirect', passport.authenticate('facebook'), redirectDashboard);
 router.get('/login/github', passport.authenticate('github'));
-router.get('/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), redirectDashboard);
+router.get('/github/redirect', passport.authenticate('github', { failureRedirect: '/login' }), redirectDashboard);
 
 router.post('/register', [
     check('firstName').isLength({ min: 1 }).withMessage('Name too short!'),
@@ -59,13 +50,6 @@ router.post('/register', [
     }
 });
 
-router.get('/logout', (req, res)  =>  {
-    if(req.user) {
-        req.logout();
-        res.redirect('/login');
-    }
-    else
-        res.status(403).redirect('/login')
-});
+
 
 module.exports = router;

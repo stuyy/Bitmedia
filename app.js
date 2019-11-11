@@ -38,14 +38,16 @@ const authRoute = require('./routes/auth');
 const dashboardRoute = require('./routes/dashboard');
 const userRoute = require('./routes/user');
 const taskRoute = require('./routes/task');
+const mainRoute = require('./routes/main');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
-app.use('/', authRoute);
+app.use('/auth', authRoute);
 app.use('/dashboard', dashboardRoute);
 app.use('/user', userRoute);
 app.use('/task', taskRoute);
+app.use('/', mainRoute);
 
 app.use((req, res) => res.redirect('/dashboard'));
 

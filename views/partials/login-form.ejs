@@ -1,4 +1,4 @@
-<form class="user-form" method="POST" action="/login">
+<form class="user-form" method="POST" action="/auth/login">
     <% if(msg.length !== 0) { %>
         <div class="alert alert-success" role="alert">
             <%= msg %>
@@ -7,16 +7,6 @@
             </button>
         </div>
     <% } %>
-
-    <!--
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email Address</label>
-        <input name="username" type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input name="password" type="password" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Password">
-    </div>-->
     <div class="login-form mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
         <input class="mdl-textfield__input" type="email" name="username" id="email-mdl">
         <label class="mdl-textfield__label" for="email-mdl">E-Mail</label>
@@ -29,9 +19,9 @@
         Login
     </button>
     <div class="mt-2 text-center">
-        <a href="/login/facebook"><i class="fab fa-facebook icons" id="fb"></i></a>
-        <a href="/login/google"><i class="fab fa-google icons" id="google"></i></a>
-        <a href="/login/github"><i class="fab fa-github icons" id="github"></i></a>
+        <a href="auth/login/facebook"><i class="fab fa-facebook icons" id="fb"></i></a>
+        <a href="auth/login/google"><i class="fab fa-google icons" id="google"></i></a>
+        <a href="auth/login/github"><i class="fab fa-github icons" id="github"></i></a>
     </div>
-    <large class="form-text text-center">Don't have an account? <a href="/register">Register</a></large>
+    <large class="form-text text-center">Don't have an account? <a href="/register">Register</a> Forgot your Password? <a href="#">Recover</a></large>
 </form>

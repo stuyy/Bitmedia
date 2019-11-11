@@ -1,6 +1,6 @@
-<form class="user-form" method="POST" action="/register">
+<form class="user-form" method="POST" action="/auth/register">
     <% if(error.error.length !== 0) { %>
-       <% error.error.forEach(error => { %> 
+       <% error.error.forEach(error => { %>
             <div class="alert alert-danger" role="alert">
                 <%= error %>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -9,6 +9,7 @@
             </div>
         <% }) %>
     <% } %>
+    <!--
     <div class="form-row">
         <div class="form-group col">
             <label for="firstName">First Name</label>
@@ -33,7 +34,39 @@
             <input name="confirm" type="password" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Password">
         </div>
     </div>
-    <button class="btn btn-dark btn-sm btn-block" type="submit">Submit</button>
-   
-    <small class="form-text text-center">Already have an account? <a href="/login">Login</a></small>
+    -->
+    <!-- Deletable Chip -->
+    <div class="form-row">
+      <div class="col login-form mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+        <input class="mdl-textfield__input" value="<%= firstName %>" type="text" name="firstName" id="firstname-mdl">
+        <label class="mdl-textfield__label" for="firstname-mdl">First Name</label>
+      </div>
+      <div class="col login-form mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+        <input class="mdl-textfield__input" value="<%= lastName %>" type="text" name="lastName" id="lastname-mdl">
+        <label class="mdl-textfield__label" for="lastname-mdl">Last Name</label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col login-form mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+        <input class="mdl-textfield__input" value="<%= email %>" type="email" name="email" id="email-mdl">
+        <label class="mdl-textfield__label" for="email-mdl">E-Mail</label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col login-form mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+        <input class="mdl-textfield__input" type="password" name="password" id="password-mdl">
+        <label class="mdl-textfield__label" for="password-mdl">Password</label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col login-form mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+        <input class="mdl-textfield__input" type="password" name="confirm" id="confirm-mdl">
+        <label class="mdl-textfield__label" for="confirm-mdl">Confirm</label>
+      </div>
+    </div>
+    <button class="btn btn-dark mdl-color--accent btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit">
+        Register
+    </button>
+
+    <large class="form-text text-center mt-4">Already have an account? <a href="/login">Login</a></large>
 </form>

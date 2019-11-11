@@ -5,7 +5,7 @@ const User = require('../models/User');
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: `http://localhost:${process.env.PORT}/google/callback`
+    callbackURL: `/auth/google/redirect`
   },
   async function(token, tokenSecret, profile, done) {
     let email = profile.emails.shift().value;

@@ -6,7 +6,7 @@ const User = require('../models/User');
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "/facebook/callback",
+    callbackURL: "/auth/facebook/redirect",
     profileFields: ['id', 'displayName', 'picture.type(large)', 'email', 'gender']
   },
   async function(accessToken, refreshToken, profile, done) {
