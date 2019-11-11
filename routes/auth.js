@@ -35,8 +35,15 @@ router.get('/login/facebook', passport.authenticate('facebook'), (req, res) => {
 
 router.get('/facebook/callback', passport.authenticate('facebook'), (req, res) => {
   res.redirect('/dashboard');
-})
+});
 
+router.get('/login/github', passport.authenticate('github'), (req, res) => {
+  console.log("Github...");
+});
+
+router.get('/github/callback', passport.authenticate('github'), (req, res) => {
+  res.redirect('/dashboard');
+});
 router.post('/register', [
     check('firstName').isLength({ min: 1 }).withMessage('Name too short!'),
     check('lastName').isLength({ min: 1 }).withMessage('Name too short!'),

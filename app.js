@@ -8,6 +8,7 @@ const passport = require('passport');
 const LocalAuth = require('./strategies/local');
 const GoogleStrategy = require('./strategies/google');
 const FacebookStrategy = require('./strategies/facebook');
+const GitHubStrategy = require('./strategies/github');
 const SessionStore = require('express-session-sequelize')(session.Store);
 const database = require('./database/database');
 const PORT = process.env.PORT || 3506;
