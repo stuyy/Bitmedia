@@ -2,7 +2,7 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 
-class User extends Model { 
+class User extends Model {
     static init(sequelize) {
         return super.init({
             email: {
@@ -31,7 +31,7 @@ class User extends Model {
     }
     async comparePassword(pass, hash) {
         return await bcrypt.compare(pass, hash);
-    }   
+    }
 }
 
 module.exports = User;

@@ -25,10 +25,10 @@ async function postStatus() {
             console.log(err);
         }
     }
-    
+
 }
 function clearStatus() {
-    document.getElementById('status').value = '';  
+    document.getElementById('status').value = '';
 }
 async function createNewTask() {
     let title = document.getElementById('taskTitle').value;
@@ -38,7 +38,7 @@ async function createNewTask() {
     try {
         if(title.length < 10 || description.length < 10)
             throw new Error("Invalid field data.")
-        
+
         await fetch('/user/post/task', {
             method: 'POST',
             headers: { 'Content-Type' : 'application/json' },
@@ -46,7 +46,7 @@ async function createNewTask() {
         });
         closeDialogTask();
         generateTaskCard();
-    } 
+    }
     catch(e) {
         if(title.length < 10) {
             let errorMsg = 'Title cannot be less than 10 characters!';
@@ -77,7 +77,7 @@ function generateTaskCard() {
 
     let mdlCardTitle = document.createElement('div');
     mdlCardTitle.classList.add('mdl-card__title');
-    
+
     let titleHeader = document.createElement('h4');
     let titleHeaderText = document.createTextNode('Title');
     titleHeader.appendChild(titleHeaderText);
@@ -102,15 +102,27 @@ function generateTaskCard() {
 }
 async function deleteTask(event) {
     console.log("Hello?");
-    let id = event.target.id;
+    let id = event.target.id.substring(event.target.id.indexOf('-')+1);
+    console.log(id);
     let res = await fetch('/user/post/task', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({ id })
     }).catch(err => console.log(err));
     console.log(res);
-    let taskElement = document.getElementById(id);
+    let taskElement = document.getElementById(event.target.id);
     let childToDelete = taskElement.parentElement.parentElement;
     let parent = childToDelete.parentElement;
     parent.removeChild(childToDelete);
+}
+
+async function completeTask(event) {
+    let id = event.target.id.substring(event.target.id.indexOf('-')+1);
+    let res = await fetch('/user/post/task', {
+        method: 'PUT',
+        headers: { 'Content-Type' : 'application/json' },
+        body: JSON.stringify({ id })
+    }).catch(err => console.log(err));
+
+    console.log(res);
 }

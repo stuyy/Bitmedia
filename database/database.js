@@ -12,7 +12,6 @@ const connection = new Sequelize({
     logging: false
 });
 
-
 (async function registerModels(dir = 'models') {
     // Read the directory/file.
     let files = await fs.readdir(path.join(__dirname, '..', dir));
@@ -30,9 +29,6 @@ const connection = new Sequelize({
                 if(model.prototype instanceof Model) {
                     model.init(connection).sync(); // Initialize and Sync model.
                     console.log("Initialized and Synced " + model.name);
-                }
-                else {
-                    console.log("Skip")
                 }
             }
         }

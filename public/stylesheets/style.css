@@ -144,7 +144,6 @@ h1 {
 .status-card.mdl-card {
     width: 50%;
     height: 80%;
-    background: url('/assets/beachbg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: 70%;
