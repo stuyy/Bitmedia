@@ -9,13 +9,13 @@ class Encrypter {
         this.key = crypto.createSecretKey(this.randomBytes(24));
         this.algorithm = 'aes-192-cbc'
     }
-    encrypt(str) {
+    async encrypt(str) {
         let cipher = crypto.createCipheriv(this.algorithm, this.key, Buffer.alloc(16));
         let encrypted = cipher.update(str, 'utf8', 'hex');
         encrypted += cipher.final('hex');
         return encrypted;
     }
-    decrypt(str) {
+    async decrypt(str) {
         let decipher = crypto.createDecipheriv(this.algorithm, this.key, Buffer.alloc(16));
         let decrypted = decipher.update(str, 'hex', 'utf8');
         decrypted += decipher.final('utf8');
@@ -29,4 +29,4 @@ class Encrypter {
     }
 }
 
-module.exports = Encrypter;
+module.exports = new Encrypter();
