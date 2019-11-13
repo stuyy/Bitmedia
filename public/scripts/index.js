@@ -1,9 +1,8 @@
-let addButton = document.getElementById('addBtn');
-let dialog = document.querySelector('dialog');
-addButton.addEventListener('click', function() {
-    dialog.showModal();
-});
+const dialog = document.querySelector('dialog');
 
+function displayTaskModal() {
+    dialog.showModal();
+}
 function closeDialogTask() {
     console.log("Hi")
     dialog.close();
