@@ -8,7 +8,7 @@ const isAuthorized = (req, res, next) => req.user ? res.redirect('/dashboard') :
 const isRegistered = (req, res, next) => req.user ? res.redirect('/dashboard') : next();
 
 router.get('/guest', (req, res) => {
-    res.send(200);
+    res.render('routes/test');
 });
 
 router.get('/register', isRegistered, (req, res) => {

@@ -1,6 +1,6 @@
 const authRoute = require('../routes/auth');
 const dashboardRoute = require('../routes/dashboard');
-const userRoute = require('../routes/user');
+const postRoute = require('../routes/post');
 const taskRoute = require('../routes/task');
 const mainRoute = require('../routes/main');
 const accountRoute = require('../routes/account');
@@ -10,7 +10,7 @@ module.exports = class RouteHandler {
         app.use('/', mainRoute);
         app.use('/auth', authRoute);
         app.use('/dashboard', dashboardRoute);
-        app.use('/user', userRoute);
+        app.use('/post', postRoute);
         app.use('/task', taskRoute);
         app.use('/account', accountRoute);
         console.log('Registered routes.');

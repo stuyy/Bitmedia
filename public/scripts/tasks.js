@@ -6,7 +6,7 @@ window.addEventListener('load', async () =>{
 
 async function fetchTasks() {
     try {
-        let response = await fetch('/user/post/task', {
+        let response = await fetch('/post/task', {
             method: 'GET',
             headers: { 'Content-Type' : 'application/json' },
             credentials: 'include'
@@ -33,7 +33,7 @@ async function completeSelectedTasks() {
         tasks.push({ id: val })
     });
     console.log(tasks)
-    let res = await fetch('/user/post/task', {
+    let res = await fetch('/post/task', {
         method: 'PUT',
         headers: { 'Content-Type' : 'application/json' },
         credentials: 'include',

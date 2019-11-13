@@ -3,7 +3,7 @@ async function postStatus() {
     if(status.value.length !== 0) {
         let statusObj = { status: status.value }
         try {
-            let res = await fetch('/user/post/status', {
+            let res = await fetch('/post/status', {
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json'
@@ -25,7 +25,6 @@ async function postStatus() {
             console.log(err);
         }
     }
-
 }
 function clearStatus() {
     document.getElementById('status').value = '';
@@ -39,7 +38,7 @@ async function createNewTask() {
         if(title.length < 10 || description.length < 10)
             throw new Error("Invalid field data.")
 
-        await fetch('/user/post/task', {
+        await fetch('/post/task', {
             method: 'POST',
             headers: { 'Content-Type' : 'application/json' },
             body: JSON.stringify({ title: title, desc: description })
@@ -104,7 +103,7 @@ async function deleteTask(event) {
     console.log("Hello?");
     let id = event.target.id.substring(event.target.id.indexOf('-')+1);
     console.log(id);
-    let res = await fetch('/user/post/task', {
+    let res = await fetch('/post/task', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({ id })
@@ -118,11 +117,10 @@ async function deleteTask(event) {
 
 async function completeTask(event) {
     let id = event.target.id.substring(event.target.id.indexOf('-')+1);
-    let res = await fetch('/user/post/task', {
+    let res = await fetch('/post/task', {
         method: 'PUT',
         headers: { 'Content-Type' : 'application/json' },
-        body: JSON.stringify({ id })
+        body: JSON.stringify([{ id }])
     }).catch(err => console.log(err));
-
     console.log(res);
 }
