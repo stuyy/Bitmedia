@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3506;
 const morgan = require('morgan');
 const ENVIRONMENT = process.env.ENVIRONMENT;
 const path = require('path');
+
 if(ENVIRONMENT === 'DEV')
   app.use(morgan('tiny'));
 
@@ -34,20 +35,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-const authRoute = require('./routes/auth');
-const dashboardRoute = require('./routes/dashboard');
-const userRoute = require('./routes/user');
-const taskRoute = require('./routes/task');
-const mainRoute = require('./routes/main');
+require('./utils/RouteHandler').register(app);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
-
-app.use('/auth', authRoute);
-app.use('/dashboard', dashboardRoute);
-app.use('/user', userRoute);
-app.use('/task', taskRoute);
-app.use('/', mainRoute);
 
 app.use((req, res) => res.redirect('/dashboard'));
 
