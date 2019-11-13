@@ -42,6 +42,18 @@ router.post('/post/status', isUserAuthenticated, async (req, res) => {
     }
 });
 
+router.get('/post/task', isUserAuthenticated, async(req, res) => {
+    let userTasks = await Task.findAll({ where: { authorId: req.user.dataValues.email }, order: [['createdAt', 'DESC']]}).catch(err => console.log(err));
+    console.log(userTasks);
+    if(userTasks) {
+        userTasks = userTasks.map(m => m.dataValues);
+        res.status(200).send(userTasks);
+    }
+    else {
+        res.status(403).end();
+    }
+});
+
 router.post('/post/task', isUserAuthenticated, async (req, res) =>  {
     let user = req.user.dataValues;
     console.log(req.body);
