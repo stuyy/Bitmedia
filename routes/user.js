@@ -43,7 +43,7 @@ router.post('/post/status', isUserAuthenticated, async (req, res) => {
 });
 
 router.get('/post/task', isUserAuthenticated, async(req, res) => {
-    let userTasks = await Task.findAll({ where: { authorId: req.user.dataValues.email }, order: [['createdAt', 'DESC']]}).catch(err => console.log(err));
+    let userTasks = await Task.findAll({ where: { authorId: req.user.dataValues.email, completed: false }, order: [['createdAt', 'DESC']]}).catch(err => console.log(err));
     console.log(userTasks);
     if(userTasks) {
         userTasks = userTasks.map(m => m.dataValues);
@@ -80,10 +80,13 @@ router.delete('/post/task', isUserAuthenticated, async (req, res) => {
 });
 
 router.put('/post/task', isUserAuthenticated, async (req, res) => {
-    console.log(req.body);
-    let task = await Task.update({ completed: true }, { where: { id: id }})
-        .catch(err => console.log(err));
-    console.log(task);
+   
+    let ids = req.body;
+    for(let i = 0; i < ids.length; i++) {
+        console.log(ids[i].id);
+        let task = await Task.update({ completed: true }, { where: { id: ids[i].id }}).catch(err => console.log(err));
+        console.log(task);
+    }
     res.send(200);
 });
 module.exports = router;
