@@ -20,6 +20,10 @@ h1 {
     color: white;
     width: 30%;
 }
+
+.recover.mdl-textfield {
+  width: 100% !important;
+}
 .login-form .mdl-textfield__label {
   color: orange !important;
 }

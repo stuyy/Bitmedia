@@ -1,9 +1,23 @@
 <% include ../partials/header %>
 
+<button id="menu" class="mdl-button mdl-js-button mdl-button--icon">
+  <i class="material-icons">home</i>
+</button>
+
+<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+    for="menu">
+  <a href="/login"><li class="mdl-menu__item">Login</li></a>
+  <a href="/register"><li class="mdl-menu__item">Register</li></a>
+</ul>
 <form class="user-form" action="/recover" method="POST">
     <% if(msg.length !== 0) { %>
         <div class="alert alert-warning" role="alert">
             <%= msg %>
+        </div>
+    <% } %>
+    <% if(error.length !== 0) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
         </div>
     <% } %>
     <div class="login-form recover mdl-textfield mdl-textfield--floating-label mdl-js-textfield">

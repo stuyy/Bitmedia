@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+
+<form class="user-form" action="/account/password/reset/" method="POST">
+    <div class="login-form recover mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+        <input class="mdl-textfield__input" type="email" name="email" id="email" required>
+        <label for="email" class="mdl-textfield__label">Enter Your E-Mail</label>
+    </div>
+    <button class="mdl-color--accent btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit">
+        Submit
+    </button>
+</form>
+<% include ../partials/footer %>

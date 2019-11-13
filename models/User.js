@@ -21,7 +21,7 @@ class User extends Model {
         }, {
             tableName: 'Users',
             timestamps: true,
-            sequelize: sequelize
+            sequelize: sequelize,
         })
     }
     static async hashPassword(pw) {
