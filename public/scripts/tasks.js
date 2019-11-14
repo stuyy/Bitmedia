@@ -1,7 +1,7 @@
 const selectedTasks = new Map();
 
 window.addEventListener('load', async () =>{
-    await loadTasks();
+    //await loadTasks();
 });
 
 async function fetchTasks() {
@@ -82,4 +82,19 @@ function generateTaskComponent(task) {
     listElement.appendChild(spanCheckbox);
     let taskList = document.getElementById('task-list');
     taskList.appendChild(listElement)
+}
+
+function displayTaskDescription(event) {
+    console.log(event.target.parentElement.id);
+    let id = 'dialog-'.concat(event.target.parentElement.id.split("-").slice(2).shift());
+    let dialogElement = document.getElementById(id);
+    dialogElement.showModal();
+    //document.getElementById('dialog-desc').showModal();
+}
+
+function closeTaskDescription(event) {
+    console.log(event.target.id)
+    let id = 'dialog-'.concat(event.target.id.split("-").slice(2).shift());
+    let dialogElement = document.getElementById(id);
+    dialogElement.close();
 }
