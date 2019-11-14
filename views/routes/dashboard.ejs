@@ -25,6 +25,23 @@
   <% include ../partials/navbar %>
   <main class="mdl-layout__content dashboard-body">
     <!-- Render Task Partial -->
+    
+    <div class="top-bar mdl-color--blue-grey-600">
+      <% if(lastStatus) { %> 
+        <div class="status-date"  style="color: white;">
+          <span id="statusUpdateDate"><%= lastStatus.createdAt.toLocaleDateString() %></span>
+          <span id="statusUpdateTime"><%= lastStatus.createdAt.toLocaleTimeString() %></span>
+        </div>
+        <div id="statusUpdateContent">
+          <span style="color: lightgreen;">Last Update</span>
+          <span style="color: white;"><%= lastStatus.statusContent %></span>
+        </div>
+      <% } %>
+    </div>
+    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action" type="button"></button>
+    </div>
     <div class="recent-tasks" id="recent-tasks-body">
       <% if(recentTasks) { %>
         <% recentTasks.forEach(task => { %>
@@ -32,13 +49,35 @@
         <% }) %>
       <% } %>
     </div>
-    <!--
-    <div id="success-msg">
-
+    <div class="status-widget">
+      <div class="status-card mdl-card">
+        <div class="mdl-card--expand mdl-card__title mdl-card--border">
+          <h4>Update Your Status</h4>
+        </div>
+        <form method="POST" action="/post/status">
+          <div class="status-card mdl-textfield mdl-js-textfield">
+            <textarea class="mdl-textfield__input" maxlength="250"  rows="4" type="text" placeholder="What's new?" id="status"></textarea>
+          </div>
+        </form>
+        <div class="action-buttons mdl-card__actions">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red-100" onclick="clearStatus()">Clear</button>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange-100" onclick="postStatus()" id="post-status-button">Submit</button>
+        </div>
+      </div>
+      <aside class="new-task-sidebar mdl-card">
+        <div class="mdl-card__title mdl-card--expand">
+          <h2 class="mdl-card__title-text" style="color: white;">New Task</h2>
+        </div>
+        <div class="mdl-card__menu">
+          <button class="mdl-button mdl-js-button mdl-button--fab" onclick="displayTaskModal()">
+            <i class="material-icons">add</i>
+          </button>
+        </div>
+      </aside>
     </div>
-    <% include ../partials/dashboard/main %>
-    <% include ../partials/dashboard/status %>
-    <% include ../partials/misc/dialog %>  -->
+    <!--
+    <% include ../partials/dashboard/main %> -->
+    <% include ../partials/misc/dialog %> 
   </main>
 </div>
 <% include ../partials/footer %>
