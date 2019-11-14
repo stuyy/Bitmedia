@@ -15,17 +15,21 @@ async function postStatus() {
             document.getElementById('statusUpdateTime').innerText = new Date().toLocaleTimeString();
             document.getElementById('statusUpdateContent').innerText = status.value;
             status.value = '';
-            let successDiv = document.getElementById('success-msg');
-            successDiv.appendChild(alert);
-            setTimeout(() => {
-                successDiv.removeChild(alert);
-            }, 5500);
+            var snackbarContainer = document.querySelector('#demo-snackbar-example');
+            console.log('hi')
+            var showSnackbarButton = document.getElementById('post-status-button');
+            var data = {
+                message: 'Status Updated',
+                timeout: 5000
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
         }
         catch(err) {
             console.log(err);
         }
     }
 }
+
 function clearStatus() {
     document.getElementById('status').value = '';
 }
