@@ -9,34 +9,48 @@ const CLIENT_ROUTES = [
     { name: 'Settings', url: '/settings' },
     { name: 'Logout', url: '/logout' }
 ];
+const isAuthorized = (req, res, next) => req.user ? next() : res.status(403).redirect('/login');
 
-router.get('/', async (req, res) => {
-    if(req.user) {
-
-        let userTasks = await Task.findAll({ where: { authorId: req.user.dataValues.email, completed: false }, order: [['createdAt', 'DESC']]}).catch(err => console.log(err));
+router.get('/', isAuthorized, async (req, res) => {
+    let userTasks = await Task.findAll({ where: { authorId: req.user.dataValues.email, completed: false }, order: [['createdAt', 'DESC']]}).catch(err => console.log(err));
         
-        if(userTasks) {
-            userTasks = userTasks.map(m => {
-                delete m.dataValues.authorId
-                return m.dataValues });
+    if(userTasks) {
+        userTasks = userTasks.map(m => {
+            delete m.dataValues.authorId
+            return m.dataValues });
 
-            res.status(200).render('routes/tasks', {
-                title: 'Tasks',
-                routes: CLIENT_ROUTES,
-                activeRoute: 'Tasks',
-                userTasks
-            });
-        }
-        else {
-            res.status(403).end();
-        }
-        
+        res.status(200).render('routes/tasks', {
+            title: 'Tasks',
+            routes: CLIENT_ROUTES,
+            activeRoute: 'Tasks',
+            userTasks
+        });
     }
     else {
-        res.status(403);
-        res.redirect('/register')
+        res.status(403).end();
     }
 });
 
+router.get('/completed', isAuthorized, async (req, res) => {
+    try {
+        let completedTasks = await Task.findAll({ 
+            where: { 
+                authorId: req.user.dataValues.email, 
+                completed: true }, 
+            order: [['createdAt', 'DESC']] 
+        });
+        if(completedTasks) {
+            res.status(200).render('routes/completedtasks', {
+                title: 'Completed Tasks',
+                completedTasks,
+                activeRoute: 'Completed',
+                routes: [{ name: 'Back', url: '/task'}]
+            });
+        }
+    }
+    catch(err) {
+        res.status(403).end();
+    }
+});
 
 module.exports = router;    

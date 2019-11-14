@@ -1,0 +1,11 @@
+<dialog class="my-dialog mdl-dialog" id="dialog-<%=completedTasks[i].id %>">
+    <h4 class="mdl-dialog__title"><%= completedTasks[i].title %></h4>
+    <div class="mdl-dialog__content">
+        <p>
+        <%= completedTasks[i].description %>
+        </p>
+    </div>
+    <div class="mdl-dialog__actions">
+        <button type="button" class="mdl-button" onclick="closeTaskDescription(event)" id="dialog-button-<%=completedTasks[i].id%>">Close</button>
+    </div>
+</dialog>  
