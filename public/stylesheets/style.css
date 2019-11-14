@@ -20,7 +20,6 @@ h1 {
     color: white;
     width: 30%;
 }
-
 .recover.mdl-textfield {
   width: 100% !important;
 }
@@ -186,6 +185,7 @@ h1 {
 }
 .task-card > .mdl-card__supporting-text {
   min-height: 100px;
+  width: 100%;
 }
 .task-card > .mdl-card__title {
   color: black !important;

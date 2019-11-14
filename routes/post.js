@@ -64,12 +64,11 @@ router.delete('/task', isUserAuthenticated, async (req, res) => {
 });
 
 router.put('/task', isUserAuthenticated, async (req, res) => {
-   
     let ids = req.body;
+    console.log(ids);
     for(let i = 0; i < ids.length; i++) {
         console.log(ids[i].id);
         let task = await Task.update({ completed: true }, { where: { id: ids[i].id }}).catch(err => console.log(err));
-        console.log(task);
     }
     res.send(200);
 });
