@@ -3,7 +3,6 @@ require('./strategies/authentication')
 const express = require('express');
 const app = express();
 const session = require('express-session');
-const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const passport = require('passport');
 const SessionStore = require('express-session-sequelize')(session.Store);
@@ -15,8 +14,6 @@ const path = require('path');
 
 if(ENVIRONMENT === 'DEV')
   app.use(morgan('tiny'));
-
-app.use(cookieParser('keyboard cat'));
 
 app.use(flash());
 app.use(express.json());
