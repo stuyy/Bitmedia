@@ -1,4 +1,4 @@
-const dialog = document.querySelector('dialog');
+const dialog = document.getElementById('task-display-modal')
 
 function displayTaskModal() {
     dialog.showModal();
