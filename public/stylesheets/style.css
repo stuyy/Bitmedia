@@ -72,8 +72,8 @@ h1 {
 
 .dashboard-body {
     background: linear-gradient(
-        rgba(0, 0, 0, 0.6),
-        rgba(0, 0, 0, 0.1)
+        rgba(0, 0, 0, 0.8),
+        rgba(0, 0, 0, 0.5)
       ), url('/assets/beach.jpg') no-repeat center center fixed;
     background-size: cover;
 }
@@ -144,12 +144,6 @@ h1 {
     justify-content: flex-end;
 }
 
-.dashboard-status-form {
-    text-align: center;
-}
-.mdl-textfield  {
-    width: 95% !important;
-}
 .recent-tasks-sidebar {
     width: 30%;
 }
@@ -202,6 +196,58 @@ h1 {
   background-repeat: no-repeat;
   background-position-y: center;
 }
+.mdl-snackbar--active {
+  min-width: 600px !important;
+  max-width: 800px !important;
+}
+.status-widget {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 10px;
+}
+.status-card.mdl-card {
+  width: 80%;
+  margin-right: 2px;
+}
+.status-card.mdl-textfield {
+  width: 100%;
+  padding: 20px;
+}
+.status-card.mdl-textfield__input {
+  padding: 4px;
+}
+.new-task-sidebar.mdl-card {
+  width: 40%;
+  background-color: white;
+  margin-left: 2px;
+}
+
+.new-task-sidebar > .mdl-card__title {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.5)
+  ), url('/assets/book.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 70%;
+  color: white;
+}
+#success-msg {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.top-bar {
+  width: 70%;
+  margin: 0 auto;
+  max-height: 60px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 15px;
+  box-sizing: border-box;
+}
 @media (max-width: 1200px) {
   /*
   .dashboard-main {
@@ -233,8 +279,21 @@ h1 {
   .recent-tasks {
     flex-direction: column;
   }
+  .status-widget {
+    flex-direction: column-reverse;
+  }
+  .status-card.mdl-card {
+    width: 100%;
+  }
+  .new-task-sidebar.mdl-card {
+    width: 100%;
+    min-height: 50vh;
+  }
+  .top-bar {
+    flex-direction: column;
+    max-height: none;
+  }
 }
-
 @media (max-width: 900px) {
   .dashboard-main {
     flex-direction: column-reverse;
@@ -246,6 +305,12 @@ h1 {
 
 @media (max-width: 700px) {
   .recent-tasks {
+    width: 100%;
+  }
+  .status-widget {
+    width: 100%;
+  }
+  .top-bar {
     width: 100%;
   }
 }
