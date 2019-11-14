@@ -87,18 +87,7 @@ h1 {
   border-right: 0 !important;
 }
 @media (max-width: 1200px) {
-  .cards {
-    margin-top: 0;
-    flex-direction: column;
-    align-items: center;
-  }
-  .welcome-card, .profile-card {
-    width: 100% !important;
-    margin: 0 !important;
-  }
-  .user-form {
-    width: 70%;
-  }
+  
 }
 .welcome-card.mdl-card {
     width: 50%;
@@ -129,10 +118,6 @@ h1 {
     width: 60%;
     margin: 0 auto;
 }
-.mdl-dialog__content {
-
-}
-
 .task-form > div {
     width: 100%;
 }
@@ -168,15 +153,6 @@ h1 {
 .recent-tasks-sidebar {
     width: 30%;
 }
-.task-card.mdl-card {
-    width: 100%;
-}
-.task-card {
-  word-wrap: break-word;
-}
-.task-card > .mdl-card__title {
-  color: black !important;
-}
 .sidebar-link {
   color: black !important;
 }
@@ -205,7 +181,29 @@ h1 {
   padding-left: 20px;
   padding-right: 15px;
 }
+
+.recent-tasks {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+}
+.task-card.mdl-card {
+  width: 100%;
+}
+.task-card > .mdl-card__supporting-text {
+  min-height: 100px;
+}
+.task-card > .mdl-card__title {
+  color: black !important;
+  min-height: 150px;
+  /* background: url('/assets/road.jpg');  */
+  background-color: pink;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
 @media (max-width: 1200px) {
+  /*
   .dashboard-main {
     margin-top: 0;
   }
@@ -219,6 +217,22 @@ h1 {
     width: 40% !important;
     height: 100%;
   }
+  */
+  .cards {
+    margin-top: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+  .welcome-card, .profile-card {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .user-form {
+    width: 70%;
+  }
+  .recent-tasks {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 900px) {
@@ -227,5 +241,11 @@ h1 {
   }
   .status-card, .recent-tasks-sidebar {
     width: 100% !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .recent-tasks {
+    width: 100%;
   }
 }

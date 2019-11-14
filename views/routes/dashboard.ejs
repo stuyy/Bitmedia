@@ -24,12 +24,21 @@
   </header>
   <% include ../partials/navbar %>
   <main class="mdl-layout__content dashboard-body">
+    <!-- Render Task Partial -->
+    <div class="recent-tasks" id="recent-tasks-body">
+      <% if(recentTasks) { %>
+        <% recentTasks.forEach(task => { %>
+          <% include ../partials/taskcard %>
+        <% }) %>
+      <% } %>
+    </div>
+    <!--
     <div id="success-msg">
 
     </div>
     <% include ../partials/dashboard/main %>
     <% include ../partials/dashboard/status %>
-    <% include ../partials/misc/dialog %>
+    <% include ../partials/misc/dialog %>  -->
   </main>
 </div>
 <% include ../partials/footer %>
