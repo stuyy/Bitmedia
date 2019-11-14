@@ -183,6 +183,28 @@ h1 {
 #status {
   resize: none;
 }
+
+.task-list-ul {
+  margin-top: 50px !important;
+  width: 40%;
+  background-color: gray;
+  margin: 0 auto;
+  padding: 20px !important;
+}
+.list-item {
+  height: 100px !important;
+}
+.task-menu-bar {
+  margin: 0 auto;
+  width: 100%;
+  background-color: white;
+}
+.settings {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 15px;
+}
 @media (max-width: 1200px) {
   .dashboard-main {
     margin-top: 0;
