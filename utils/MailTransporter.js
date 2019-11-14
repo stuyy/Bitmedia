@@ -16,12 +16,13 @@ class MailTransporter {
     }
     async sendMail(opts = {}) {
         try {
-            await this.transporter.sendMail({
+            let mail = await this.transporter.sendMail({
                 to: opts.receiver,
                 subject: opts.subject,
                 text: opts.message
             });
             console.log("Sent.");
+            return mail;
         }
         catch(err) {
             console.log(err);

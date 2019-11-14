@@ -9,21 +9,6 @@ function isUserAuthenticated(req, res, next) {
         res.status(403).redirect('/login')
     }
 }
-
-router.get('/', (req, res) => {
-    if(req.user) {
-        res.send("user")
-    }
-    else {
-        res.status(403);
-        res.redirect('/register')
-    }
-});
-
-router.get('/', isUserAuthenticated, (req, res) => {
-    res.send("Yeet")
-});
-
 router.post('/status', isUserAuthenticated, async (req, res) => {
 
     let user = req.user.dataValues;
@@ -44,7 +29,6 @@ router.post('/status', isUserAuthenticated, async (req, res) => {
 
 router.get('/task', isUserAuthenticated, async(req, res) => {
     let userTasks = await Task.findAll({ where: { authorId: req.user.dataValues.email, completed: false }, order: [['createdAt', 'DESC']]}).catch(err => console.log(err));
-    console.log(userTasks);
     if(userTasks) {
         userTasks = userTasks.map(m => m.dataValues);
         res.status(200).send(userTasks);
