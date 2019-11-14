@@ -100,8 +100,8 @@ function generateTaskCard() {
     taskSidebar.insertBefore(mdlCard, taskSidebar.firstChild);
 }
 async function deleteTask(event) {
-    console.log("Hello?");
-    let id = event.target.id.substring(event.target.id.indexOf('-')+1);
+    let parentId = event.target.parentElement.id;
+    let id = parentId.substring(parentId.indexOf('-')+1);
     console.log(id);
     let res = await fetch('/post/task', {
         method: 'DELETE',
@@ -109,14 +109,15 @@ async function deleteTask(event) {
         body: JSON.stringify({ id })
     }).catch(err => console.log(err));
     console.log(res);
-    let taskElement = document.getElementById(event.target.id);
-    let childToDelete = taskElement.parentElement.parentElement;
-    let parent = childToDelete.parentElement;
-    parent.removeChild(childToDelete);
+    let taskElement = document.getElementById('task-card-'.concat(`${id}`));
+    let parent = taskElement.parentElement;
+    parent.removeChild(taskElement);
 }
 
 async function completeTask(event) {
-    let id = event.target.id.substring(event.target.id.indexOf('-')+1);
+    let parentId = event.target.parentElement.id;
+    let id = parentId.substring(parentId.indexOf('-')+1);
+    console.log(id);
     let res = await fetch('/post/task', {
         method: 'PUT',
         headers: { 'Content-Type' : 'application/json' },
