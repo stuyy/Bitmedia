@@ -12,16 +12,31 @@ const CLIENT_ROUTES = [
 
 router.get('/', async (req, res) => {
     if(req.user) {
-        res.render('routes/tasks', {
-            title: 'Tasks',
-            routes: CLIENT_ROUTES,
-            activeRoute: 'Tasks'
-        })
+
+        let userTasks = await Task.findAll({ where: { authorId: req.user.dataValues.email, completed: false }, order: [['createdAt', 'DESC']]}).catch(err => console.log(err));
+        
+        if(userTasks) {
+            userTasks = userTasks.map(m => {
+                delete m.dataValues.authorId
+                return m.dataValues });
+
+            res.status(200).render('routes/tasks', {
+                title: 'Tasks',
+                routes: CLIENT_ROUTES,
+                activeRoute: 'Tasks',
+                userTasks
+            });
+        }
+        else {
+            res.status(403).end();
+        }
+        
     }
     else {
         res.status(403);
         res.redirect('/register')
     }
 });
+
 
 module.exports = router;    

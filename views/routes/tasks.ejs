@@ -24,6 +24,7 @@
   </header>
   <% include ../partials/navbar %>
   <main class="mdl-layout__content dashboard-body" id="main-body">
+    
     <ul class="task-list-ul mdl-list" id="task-list">
       <div class="settings">
         <h4>Your Tasks</h4>
@@ -32,23 +33,44 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
         for="task-list-menu">
+          <li class="mdl-menu__item" onclick="displayTaskModal()">New</li> 
+          <li class="mdl-menu__item"><a href="/user/task/completed">View Completed</a></li>
           <li class="mdl-menu__item" onclick="completeSelectedTasks()">Complete</li>
           <li class="mdl-menu__item" onclick="deleteSelectedTasks()">Delete</li>
         </ul>
       </div>
-      <!-- 
-      <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          <i class="material-icons  mdl-list__item-avatar">person</i>Bryan Cranston
-        </span>
-        <span class="mdl-list__item-secondary-action">
-          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="task-id-1">
-            <input type="checkbox" id="task-id-1" class="mdl-checkbox__input" onchange="taskChecked(event)">
-          </label>
-        </span>
-      </li>-->
+      <% if(userTasks.length !== 0) { %>
+        <% for(let i = 0; i < userTasks.length; i++) { %>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content" id="tooltip-<%=userTasks[i].id%>">
+              <i class="material-icons  mdl-list__item-avatar">person</i>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="displayTaskDescription(event)" id="task-list-<%=userTasks[i].id%>">
+              <%= userTasks[i].title %>
+              </button>
+            </span>
+            <span class="mdl-list__item-secondary-action">
+              <label class="mdl-checkbox mdl-js-checkbox" for="task-id-<%=userTasks[i].id%>">
+                <input type="checkbox" id="task-id-<%=userTasks[i].id%>" class="mdl-checkbox__input" onchange="taskChecked(event)">
+              </label>
+            </span>
+          </li>
+          <!-- Dialog -->
+          <dialog class="my-dialog mdl-dialog" id="dialog-<%=userTasks[i].id %>">
+            <h4 class="mdl-dialog__title"><%= userTasks[i].title %></h4>
+            <div class="mdl-dialog__content">
+              <p>
+                <%= userTasks[i].description %>
+              </p>
+            </div>
+            <div class="mdl-dialog__actions">
+              <button type="button" class="mdl-button" onclick="closeTaskDescription(event)" id="dialog-button-<%=userTasks[i].id%>">Close</button>
+            </div>
+          </dialog>          
+        <% } %>
+      <% } %>
     </ul>
   </main>
 </div>
+<% include ../partials/misc/dialog %>
 <script src="/scripts/tasks.js"></script>
 <% include ../partials/footer %>
