@@ -10,24 +10,28 @@ async function postStatus() {
                 },
                 body: JSON.stringify(statusObj)
             });
-            let alert = generateBootstrapAlert('success', 'Status Updated!');
-            document.getElementById('statusUpdateDate').innerText = new Date().toLocaleDateString();
-            document.getElementById('statusUpdateTime').innerText = new Date().toLocaleTimeString();
-            document.getElementById('statusUpdateContent').innerText = status.value;
-            status.value = '';
-            var snackbarContainer = document.querySelector('#demo-snackbar-example');
-            console.log('hi')
-            var showSnackbarButton = document.getElementById('post-status-button');
-            var data = {
-                message: 'Status Updated',
-                timeout: 5000
-            };
-            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+            updateStatusElement();
         }
         catch(err) {
             console.log(err);
         }
     }
+}
+
+function updateStatusElement() {
+    let status = document.getElementById('status');
+    let alert = generateBootstrapAlert('success', 'Status Updated!');
+    document.getElementById('statusUpdateDate').innerText = new Date().toLocaleDateString();
+    document.getElementById('statusUpdateTime').innerText = new Date().toLocaleTimeString();
+    document.getElementById('statusUpdateContent').innerText = status.value;
+    status.value = '';
+    var snackbarContainer = document.querySelector('#demo-snackbar-example');
+    var showSnackbarButton = document.getElementById('post-status-button');
+    var data = {
+        message: 'Status Updated',
+        timeout: 5000
+    };
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
 }
 
 function clearStatus() {
