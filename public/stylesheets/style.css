@@ -2,13 +2,16 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   background-color: #534B62;
 }
+
 h1 {
   margin: 0;
   padding: 0;
 }
+
 .user-form {
   position: absolute;
   top: 50%;
@@ -17,142 +20,158 @@ h1 {
   color: white;
   width: 30%;
 }
+
+.main-div-wrapper {
+  display: flex;
+  flex-direction: column;
+}
 .sidebar-content {
   background-color: #694D75 !important;
   color: #FF88DC !important;
   border-right: 0 !important;
 }
+
 .mdl-navigation__link {
   color: #FF88DC !important;
 }
+
 .active-link {
   color: #C3C3E6 !important;
   background-color: #B370B0;
 }
+
 .recover.mdl-textfield {
   width: 100% !important;
 }
+
 .login-form .mdl-textfield__label {
   color: orange !important;
 }
+
 .login-form .mdl-textfield__input {
   border-bottom: 2px solid orange !important;
 }
+
 .login-form .mdl-textfield {
   width: 100% !important;
 }
+
 .icons {
-    padding: 5px;
-    font-size: 45px;
+  padding: 5px;
+  font-size: 45px;
 }
+
 #fb {
   color: #4267B2;
   cursor: pointer;
 }
+
 #fb:hover {
   color: #7590C7;
   transition: color .8s;
 }
+
 #google {
   color: #DB4437;
   cursor: pointer;
 }
+
 #google:hover {
   color: #E4776D;
   transition: color .8s;
 }
+
 #github {
   color: #211F1F;
   cursor: pointer;
 }
+
 #github:hover {
   color: #494747;
   transition: color .8s;
 }
 
-.form-group > input {
+.form-group>input {
   height: 35px;
 }
 
 .my-card.mdl-card {
-    width: 100%;
+  width: 100%;
 }
 
 .dashboard-body {
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.4),
-        rgba(0, 0, 0, 0.3)
-      ), url('/assets/purp.jpg') no-repeat center center fixed;
-    background-size: cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.3)), url('/assets/purp.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .cards {
-    display: flex;
-    margin-top: 50px;
-    justify-content: center;
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
 }
+
 .welcome-card.mdl-card {
-    width: 50%;
-    height: 400px;
+  width: 50%;
+  height: 400px;
 }
 
 .profile-card.mdl-card {
-    width: 30%;
-    height: 400px;
+  width: 30%;
+  height: 400px;
 }
 
-.welcome-card > .mdl-card__title {
-    background: url('/assets/walk.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-y: 70%;
-    color: white;
+.welcome-card>.mdl-card__title {
+  background: url('/assets/walk.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 70%;
+  color: white;
 }
 
-.profile-card > .mdl-card__title {
-    background: url('/assets/book.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-y: 70%;
-    color: white;
+.profile-card>.mdl-card__title {
+  background: url('/assets/book.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 70%;
+  color: white;
 }
+
 .my-dialog.mdl-dialog {
-    width: 60%;
-    margin: 0 auto;
+  width: 60%;
+  margin: 0 auto;
 }
-.task-form > div {
-    width: 100%;
+
+.task-form>div {
+  width: 100%;
 }
 
 /* Dashboard Main CSS */
 
 .dashboard-main {
-    display: flex;
-    margin-top: 50px;
-    justify-content: center;
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
 }
 
-.status-card.mdl-card {
-  
-}
 .status-card .mdl-card__title {
   color: white !important;
 }
-.status-card .mdl-textfield {
 
-}
 .action-buttons {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .recent-tasks-sidebar {
-    width: 30%;
+  width: 30%;
 }
+
 .sidebar-link {
   color: black !important;
 }
-#status {
+
+#statusUpdateBox {
   resize: none;
 }
 
@@ -163,14 +182,17 @@ h1 {
   margin: 0 auto;
   padding: 20px !important;
 }
+
 .list-item {
   height: 100px !important;
 }
+
 .task-menu-bar {
   margin: 0 auto;
   width: 100%;
   background-color: white;
 }
+
 .settings {
   display: flex;
   justify-content: space-between;
@@ -183,10 +205,12 @@ h1 {
   width: 70%;
   margin: 0 auto;
 }
+
 .task-card.mdl-card {
   width: 100%;
 }
-.task-card > .mdl-card__supporting-text {
+
+.task-card>.mdl-card__supporting-text {
   min-height: 150px;
   max-height: 150px;
   width: 100%;
@@ -194,7 +218,8 @@ h1 {
   color: white;
   overflow: hidden;
 }
-.task-card > .mdl-card__title {
+
+.task-card>.mdl-card__title {
   color: black !important;
   background-color: #FF88DC;
   min-height: 150px;
@@ -202,6 +227,7 @@ h1 {
   background-repeat: no-repeat;
   background-position-y: center;
 }
+
 .task-card .mdl-card__actions {
   background-color: #FF88DC;
   text-align: right;
@@ -211,19 +237,23 @@ h1 {
   min-width: 600px !important;
   max-width: 800px !important;
 }
+
 .status-widget {
   width: 70%;
   margin: 0 auto;
   display: flex;
   margin-top: 10px;
 }
+
 .status-date {
   width: 170px;
   color: white;
 }
+
 .statusUpdateContent {
   width: 100%;
 }
+
 .top-bar {
   width: 70%;
   margin: 0 auto;
@@ -240,38 +270,42 @@ h1 {
   background-color: #C64191 !important;
   color: white !important;
 }
+
 .status-card.mdl-card {
   width: 80%;
   margin-right: 2px;
   background-color: #694D75;
 }
+
 .status-card.mdl-textfield {
   width: 100%;
   padding: 20px;
 }
+
 .status-card .mdl-textfield__input {
   padding: 4px;
   color: white !important;
 }
+
 .status-card .mdl-textfield__input::placeholder {
   color: white;
 }
+
 .new-task-sidebar.mdl-card {
   width: 40%;
   background-color: white;
   margin-left: 2px;
 }
 
-.new-task-sidebar > .mdl-card__title {
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.5)
-  ), url('/assets/book.jpg');
+.new-task-sidebar>.mdl-card__title {
+  background: linear-gradient(rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.5)), url('/assets/book.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 70%;
   color: white;
 }
+
 #success-msg {
   width: 70%;
   margin: 0 auto;
@@ -283,60 +317,81 @@ h1 {
     flex-direction: column;
     align-items: center;
   }
-  .welcome-card, .profile-card {
+
+  .welcome-card,
+  .profile-card {
     width: 100% !important;
     margin: 0 !important;
   }
+
   .user-form {
     width: 70%;
   }
-  .task-card:nth-of-type(2), .task-card:nth-of-type(3) {
+
+  .task-card:nth-of-type(1),
+  .task-card:nth-of-type(2),
+  .task-card:nth-of-type(3) {
     margin-top: 10px;
   }
-  .task-card > .mdl-card__supporting-text {
+
+  .task-card>.mdl-card__supporting-text {
     min-height: 100px;
   }
+
   .recent-tasks {
     flex-direction: column;
   }
+
   .status-widget {
-    flex-direction: column-reverse;
+    margin-top: 0;
+    flex-direction: column;
   }
+  
   .status-card.mdl-card {
     width: 100%;
-    margin-top: 10px;
+    background-color: #FF88DC;
   }
+
   .new-task-sidebar.mdl-card {
     width: 100%;
     min-height: 50vh;
+    margin-top: 10px;
   }
+
   .top-bar {
     flex-direction: column;
     max-height: none;
     margin-top: 0;
   }
+  .main-div-wrapper {
+    flex-direction: column-reverse;
+  }
 }
+
 @media (max-width: 900px) {
   .dashboard-main {
     flex-direction: column-reverse;
   }
-  .status-card, .recent-tasks-sidebar {
+
+  .status-card,
+  .recent-tasks-sidebar {
     width: 100% !important;
   }
+
   .recent-tasks {
     width: 100%;
   }
+
   .status-widget {
     width: 100%;
   }
+
   .top-bar {
     width: 100%;
   }
-  .task-card:nth-of-type(2), .task-card:nth-of-type(3) {
+
+  .task-card:nth-of-type(2),
+  .task-card:nth-of-type(3) {
     margin-top: 30px;
   }
-}
-
-@media (max-width: 700px) {
-  
 }

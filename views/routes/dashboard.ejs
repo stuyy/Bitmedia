@@ -16,25 +16,27 @@
         </div>
       <% } %>
     </div>
+    <!-- Render task card partial dynamically here -->
+    <div class="main-div-wrapper">
+      <div class="recent-tasks" id="recent-tasks-body">
+        <% if(recentTasks) { %>
+          <% recentTasks.forEach(task => { %>
+            <% include ../partials/taskcard %>
+          <% }) %>
+        <% } %>
+      </div>
+      <div class="status-widget">
+        <!-- This is where the Status Update Box Goes -->
+        <% include ../partials/dashboard/statusUpdateWidget %>
+        <% include ../partials/dashboard/newTaskWidget %>
+      </div>
+    </div>
+   
     <!-- This is for Snackbar; Displays when User Updates status -->
     <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
       <div class="mdl-snackbar__text"></div>
       <button class="mdl-snackbar__action" type="button"></button>
     </div>
-    <!-- Render task card partial dynamically here -->
-    <div class="recent-tasks" id="recent-tasks-body">
-      <% if(recentTasks) { %>
-        <% recentTasks.forEach(task => { %>
-          <% include ../partials/taskcard %>
-        <% }) %>
-      <% } %>
-    </div>
-    <div class="status-widget">
-      <!-- This is where the Status Update Box Goes -->
-      <% include ../partials/dashboard/statusUpdateWidget %>
-      <% include ../partials/dashboard/newTaskWidget %>
-    </div>
-   
   </main>
   <% include ../partials/misc/dialog %> 
 </div>
