@@ -1,27 +1,6 @@
 <% include ../partials/header %>
 <div class="mdl-layout--fixed-header mdl-layout mdl-js-layout">
-  <header class="mdl-layout__header mdl-layout__header mdl-color--blue">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">Welcome</span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <span>
-        <form action="/search" method="POST">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="sample6">
-              <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
-            </div>
-          </div>
-        </form>
-      </span>
-      <!-- Navigation -->
-    </div>
-  </header>
+  <% include ../partials/headerbar.ejs %>
   <% include ../partials/navbar %>
   <main class="mdl-layout__content dashboard-body" id="main-body">
     <ul class="task-list-ul mdl-list" id="task-list">

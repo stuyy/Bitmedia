@@ -23,7 +23,9 @@ router.get('/', isAuthorized, async (req, res) => {
             title: 'Tasks',
             routes: CLIENT_ROUTES,
             activeRoute: 'Tasks',
-            userTasks
+            userTasks,
+            firstName: null,
+            lastName: null
         });
     }
     else {
@@ -44,7 +46,9 @@ router.get('/completed', isAuthorized, async (req, res) => {
                 title: 'Completed Tasks',
                 completedTasks,
                 activeRoute: 'Completed',
-                routes: [{ name: 'Back', url: '/task'}]
+                routes: [{ name: 'Back', url: '/task'}],
+                firstName: null,
+                lastName: null
             });
         }
     }

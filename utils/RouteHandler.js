@@ -4,6 +4,7 @@ const postRoute = require('../routes/post');
 const taskRoute = require('../routes/task');
 const mainRoute = require('../routes/main');
 const accountRoute = require('../routes/account');
+const settingsRoute = require('../routes/settings');
 
 module.exports = class RouteHandler {
     static register(app) {
@@ -13,6 +14,7 @@ module.exports = class RouteHandler {
         app.use('/post', postRoute);
         app.use('/task', taskRoute);
         app.use('/account', accountRoute);
+        app.use('/settings', settingsRoute);
         console.log('Registered routes.');
     }
 }

@@ -1,0 +1,27 @@
+<header class="mdl-layout__header mdl-layout__header" style="background-color: #FF88DC;">
+    <div class="mdl-layout__header-row">
+        <!-- Display First and Last name if they are not null -->
+        <% if(firstName && lastName) { %>
+            <span class="mdl-layout-title">Welcome <%= firstName %> <%= lastName %>!</span>
+        <% } else { %>
+            <!-- Display title if firstName and lastName are null. -->
+            <span class="mdl-layout-title"><%= title %></span>
+        <% } %>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <span>
+            <form action="/search" method="POST">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" type="text" id="sample6">
+                        <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+                    </div>
+                </div>
+            </form>
+        </span>
+        <!-- Navigation -->
+    </div>
+</header>
