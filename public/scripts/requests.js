@@ -1,5 +1,5 @@
 async function postStatus() {
-    let status = document.getElementById('status');
+    let status = document.getElementById('statusUpdateBox');
     if(status.value.length !== 0) {
         let statusObj = { status: status.value }
         try {
@@ -19,14 +19,18 @@ async function postStatus() {
 }
 
 function updateStatusElement() {
-    let status = document.getElementById('status');
-    let alert = generateBootstrapAlert('success', 'Status Updated!');
-    document.getElementById('statusUpdateDate').innerText = new Date().toLocaleDateString();
-    document.getElementById('statusUpdateTime').innerText = new Date().toLocaleTimeString();
-    document.getElementById('statusUpdateContent').innerText = status.value;
-    status.value = '';
+    let status = document.getElementById('statusUpdateBox'); // Get the 
+
+    document.getElementById('statusUpdateDate').innerHTML = new Date().toLocaleDateString();
+    document.getElementById('statusUpdateTime').innerHTML = new Date().toLocaleTimeString();
+    document.getElementById('statusContent').innerHTML = status.value;
+
+    status.value = ''; // Clear status.
+
+    // Snackbar stuff.
     var snackbarContainer = document.querySelector('#demo-snackbar-example');
     var showSnackbarButton = document.getElementById('post-status-button');
+    // Display Snackbar.
     var data = {
         message: 'Status Updated',
         timeout: 5000
@@ -35,7 +39,7 @@ function updateStatusElement() {
 }
 
 function clearStatus() {
-    document.getElementById('status').value = '';
+    document.getElementById('statusUpdateBox').value = '';
 }
 async function createNewTask() {
     let title = document.getElementById('taskTitle').value;
