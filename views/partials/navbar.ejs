@@ -1,11 +1,11 @@
-<div class="mdl-layout__drawer mdl-color--primary-dark">
+<div class="mdl-layout__drawer sidebar-content">
     <span class="mdl-layout-title">Menu</span>
     <nav class="mdl-navigation">
         <% routes.forEach(route => { %>
             <% if(route.name === activeRoute) { %>
-                <a class="mdl-color-text--black mdl-navigation__link" href="<%= route.url %>"><%= route.name %></a>
+                <a class="mdl-navigation__link active-link" href="<%= route.url %>"><%= route.name %></a>
             <% } else { %>
-                <a class="mdl-color-text--white mdl-navigation__link" href="<%= route.url %>"><%= route.name %></a>
+                <a class="mdl-navigation__link" href="<%= route.url %>"><%= route.name %></a>
             <% } %>
         <% }); %>
     </nav>

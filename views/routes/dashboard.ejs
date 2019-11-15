@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 <div class="mdl-layout--fixed-header mdl-layout mdl-js-layout">
-  <header class="mdl-layout__header mdl-layout__header">
+  <header class="mdl-layout__header mdl-layout__header" style="background-color: #FF88DC;">
     <div class="mdl-layout__header-row">
       <!-- Title -->
       <span class="mdl-layout-title">Welcome <%= firstName %> <%= lastName %>!</span>
@@ -25,9 +25,9 @@
   <% include ../partials/navbar %>
   <main class="mdl-layout__content dashboard-body">
     <!-- Render Status Update Here -->
-    <div class="top-bar mdl-color--blue-grey-600">
+    <div class="top-bar">
       <% if(lastStatus) { %> 
-        <div class="status-date"  style="color: white;">
+        <div class="status-date">
           <span id="statusUpdateDate"><%= lastStatus.createdAt.toLocaleDateString() %></span>
           <span id="statusUpdateTime"><%= lastStatus.createdAt.toLocaleTimeString() %></span>
         </div>
@@ -55,7 +55,8 @@
       <% include ../partials/dashboard/statusUpdateWidget %>
       <% include ../partials/dashboard/newTaskWidget %>
     </div>
-    <% include ../partials/misc/dialog %> 
+   
   </main>
+  <% include ../partials/misc/dialog %> 
 </div>
 <% include ../partials/footer %>

@@ -1,24 +1,33 @@
-:root {
-  --mdl-blue: #42A5F5;
-}
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 body {
-    background-color: #534B62;
+  background-color: #534B62;
 }
 h1 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .user-form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  width: 30%;
+}
+.sidebar-content {
+  background-color: #694D75 !important;
+  color: #FF88DC !important;
+  border-right: 0 !important;
+}
+.mdl-navigation__link {
+  color: #FF88DC !important;
+}
+.active-link {
+  color: #C3C3E6 !important;
+  background-color: #B370B0;
 }
 .recover.mdl-textfield {
   width: 100% !important;
@@ -71,9 +80,9 @@ h1 {
 
 .dashboard-body {
     background: linear-gradient(
-        rgba(0, 0, 0, 0.8),
-        rgba(0, 0, 0, 0.5)
-      ), url('/assets/beach.jpg') no-repeat center center fixed;
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.3)
+      ), url('/assets/purp.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -81,12 +90,6 @@ h1 {
     display: flex;
     margin-top: 50px;
     justify-content: center;
-}
-.mdl-layout__drawer {
-  border-right: 0 !important;
-}
-@media (max-width: 1200px) {
-  
 }
 .welcome-card.mdl-card {
     width: 50%;
@@ -130,14 +133,14 @@ h1 {
 }
 
 .status-card.mdl-card {
-    width: 50%;
-    height: 80%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-y: 70%;
-    background-attachment: fixed;
+  
 }
+.status-card .mdl-card__title {
+  color: white !important;
+}
+.status-card .mdl-textfield {
 
+}
 .action-buttons {
     display: flex;
     justify-content: flex-end;
@@ -184,18 +187,26 @@ h1 {
   width: 100%;
 }
 .task-card > .mdl-card__supporting-text {
-  min-height: 100px;
+  min-height: 150px;
+  max-height: 150px;
   width: 100%;
+  background-color: #694D75;
+  color: white;
+  overflow: hidden;
 }
 .task-card > .mdl-card__title {
   color: black !important;
+  background-color: #FF88DC;
   min-height: 150px;
-  /* background: url('/assets/road.jpg');  */
-  background-color: pink;
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: center;
 }
+.task-card .mdl-card__actions {
+  background-color: #FF88DC;
+  text-align: right;
+}
+
 .mdl-snackbar--active {
   min-width: 600px !important;
   max-width: 800px !important;
@@ -206,16 +217,44 @@ h1 {
   display: flex;
   margin-top: 10px;
 }
+.status-date {
+  width: 170px;
+  color: white;
+}
+.statusUpdateContent {
+  width: 100%;
+}
+.top-bar {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 15px;
+  box-sizing: border-box;
+  margin-top: 75px;
+  background-color: #694D75;
+}
+
+.task-card-action-button {
+  background-color: #C64191 !important;
+  color: white !important;
+}
 .status-card.mdl-card {
   width: 80%;
   margin-right: 2px;
+  background-color: #694D75;
 }
 .status-card.mdl-textfield {
   width: 100%;
   padding: 20px;
 }
-.status-card.mdl-textfield__input {
+.status-card .mdl-textfield__input {
   padding: 4px;
+  color: white !important;
+}
+.status-card .mdl-textfield__input::placeholder {
+  color: white;
 }
 .new-task-sidebar.mdl-card {
   width: 40%;
@@ -238,32 +277,7 @@ h1 {
   margin: 0 auto;
 }
 
-.top-bar {
-  width: 70%;
-  margin: 0 auto;
-  max-height: 60px;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  padding: 15px;
-  box-sizing: border-box;
-}
 @media (max-width: 1200px) {
-  /*
-  .dashboard-main {
-    margin-top: 0;
-  }
-  .status-card, .recent-tasks-sidebar {
-    margin: 0 !important;
-  }
-  .status-card {
-    width: 60% !important;
-  }
-  .recent-tasks-sidebar {
-    width: 40% !important;
-    height: 100%;
-  }
-  */
   .cards {
     margin-top: 0;
     flex-direction: column;
@@ -276,6 +290,12 @@ h1 {
   .user-form {
     width: 70%;
   }
+  .task-card:nth-of-type(2), .task-card:nth-of-type(3) {
+    margin-top: 10px;
+  }
+  .task-card > .mdl-card__supporting-text {
+    min-height: 100px;
+  }
   .recent-tasks {
     flex-direction: column;
   }
@@ -284,6 +304,7 @@ h1 {
   }
   .status-card.mdl-card {
     width: 100%;
+    margin-top: 10px;
   }
   .new-task-sidebar.mdl-card {
     width: 100%;
@@ -292,6 +313,7 @@ h1 {
   .top-bar {
     flex-direction: column;
     max-height: none;
+    margin-top: 0;
   }
 }
 @media (max-width: 900px) {
@@ -301,9 +323,6 @@ h1 {
   .status-card, .recent-tasks-sidebar {
     width: 100% !important;
   }
-}
-
-@media (max-width: 700px) {
   .recent-tasks {
     width: 100%;
   }
@@ -313,4 +332,11 @@ h1 {
   .top-bar {
     width: 100%;
   }
+  .task-card:nth-of-type(2), .task-card:nth-of-type(3) {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 700px) {
+  
 }
